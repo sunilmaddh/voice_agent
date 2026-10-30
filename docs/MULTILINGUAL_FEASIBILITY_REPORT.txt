@@ -1,0 +1,292 @@
+CURRENT LOCAL MODEL UPDATE - 13 OCTOBER 2026
+User-provided A103SH benchmark now establishes that Gemma 3 270M q8 loaded
+and attempted native CPU inference using LiteRT-LM 0.17.1. This supersedes the
+missing-model blocker in the historical report below, not its speech findings.
+Artifact: 304005120 bytes; SHA-256:
+757e9119fa5bd667a2774fb470ac4afcd3190a21c677f8e69a5d6bc908abdd63
+Load: 3534.08 ms. Benchmark: 38 completed, zero valid structured outputs;
+27 MALFORMED_MODEL_OUTPUT and 11 MODEL_TIMEOUT. Mean per-case latency 20.60 s.
+Maximum sampled whole-process PSS approximately 1043.76 MiB, not model-only RAM.
+English text command extraction fails the current contract. Hindi, Kannada,
+mixed-language model accuracy and physical spoken trials remain unvalidated.
+The installed SDK's Message.toString delegates to Contents.toString; an object
+wrapper is not established as the cause. Runtime extraction is now explicit via
+Content.Text.text, and an explicit single-command diagnostic exposes bounded raw
+output without executing actions. Root cause and corrected device success are
+still pending a new diagnostic run. Do not claim these changes fix 38 failures.
+
+MULTILINGUAL SUPPORT USING A LOCAL SLM - FINAL EVIDENCE REPORT
+Date: 12 October 2026 (Asia/Calcutta)
+Overall: RED for requested local-SLM acceptance; AMBER for bounded Hindi/Hinglish
+feasibility. Required model load, actual spoken extraction and offline execution
+have not been completed. This is a final evidence report, not a validation pass.
+Scope: Hindi and Hinglish only; English is a comparison baseline. Other Indian
+languages are outside this evaluation and were not implemented.
+This section supersedes the historical 9 October report below.
+
+STATUS BY REQUIREMENT
+GREEN - Existing Hindi/Hinglish deterministic text normalization and routing:
+        historical fixture tests passed. These do not establish SLM inference.
+GREEN - Current physical device inspection: A103SH, arm64-v8a; app-private files
+        contain profileInstalled only, with no command_models directory.
+GREEN - Metadata-only Android speech readiness probe passed (1 test, 2.566 s):
+        onDeviceRecognizerAvailable=true; Google TTS reports installed English
+        and hi-IN voices with requiresNetwork=false.
+RED   - Load and verify one actual local SLM: no authorized compatible artifact
+        available; no weights loaded, hash verified or native inference run.
+RED   - Direct SLM intent/parameter accuracy: unavailable without model weights.
+AMBER - Actual spoken Hindi/Hinglish STT accuracy: operator unavailable for trials;
+        zero new spoken trials, no transcripts or measured WER.
+AMBER - Successful device actions from those spoken/model outputs: not tested.
+AMBER - Offline Hindi/Hinglish STT: general recognizer availability observed;
+        Hindi language-pack support and network-disabled recognition unverified.
+AMBER - Offline TTS: Hindi/English offline-capable voice metadata observed;
+        network-disabled synthesis and human-confirmed audibility unverified.
+RED   - Fully local end-to-end claim: not established by current configuration.
+
+MODEL SELECTION AND BLOCKER
+Preferred first evaluation artifact: litert-community/gemma-3-270m-it,
+gemma3-270m-it-q8.litertlm, listed as 304 MB and q8 by the publisher [M1].
+Use the generic artifact with CPU backend, not device-specific NPU conversions.
+Candidate status AMBER: listed LiteRT format is promising, but load compatibility
+with pinned LiteRT-LM 0.17.1 on A103SH is not yet tested. Listing size/quantization
+are publisher metadata, not measurements of a downloaded file.
+The publisher repository requires authenticated agreement to conditions and
+contact sharing to access weights. Operator answered "no" to having an authorized
+artifact/path and being able to run spoken trials now. No gated terms accepted,
+no contact information submitted, no weights downloaded or substituted.
+Subsequent authorized loading attempt: searched Downloads and workspace for
+.litertlm/.task/.gguf files; no compatible artifact found. Publisher download
+access check for gemma3-270m-it-q8.litertlm returned HTTP 401 Unauthorized.
+The model was therefore not downloaded, staged or loaded. This is an access
+blocker, not an observed native compatibility or inference failure. The operator
+must obtain permitted access/download before device loading can proceed.
+Actual deployed model ID, SHA-256, measured size, quantization verification,
+load latency, RAM, inference latency and outputs: NOT AVAILABLE.
+FunctionGemma remains a specialist candidate [M2], but current adapter expects
+strict JSON, not native function-call syntax. Its artifact/schema suitability and
+Hindi/Hinglish quality require direct testing; model-family multilingual claims
+must not be treated as validated accuracy for a 270M model on this task.
+
+CURRENT DEVICE AND SPEECH FINDINGS
+Read-only recheck: speech_preferences languageTag=en-US,
+allowSystemRecognition=true, preferSystemRecognition=true. This supersedes the
+earlier hi-IN snapshot; preferences were not changed in this evaluation.
+The configured path prefers system SpeechRecognizer, which may use its provider's
+network service. No network trace or offline spoken trial establishes whether
+these particular recognitions transmit audio. Do not describe it as offline STT.
+Readiness probe at 18:17 IST found com.google.android.tts and installed offline-
+declared Hindi voices: hi-IN-language, hi-in-x-hia-local, hi-in-x-hic-local,
+hi-in-x-hid-local and hi-in-x-hie-local; English local voices are also installed.
+This proves declared availability only, not pronunciation, mixed-language quality,
+actual offline playback or audibility. On-device recognizer API availability does
+not establish installed Hindi recognition support.
+No Wi-Fi/mobile-data settings were changed, no audio captured, no synthetic
+speech played and no calls/messages or other actions executed by this probe.
+Aiko was reopened after instrumentation. Production app behavior was not changed.
+
+SEPARATE RESULTS: NO COMBINED SCORE
+Stage                      | Actual evidence             | Missing measurement
+STT                        | capability metadata only    | spoken transcript/WER
+SLM intent extraction      | no model loaded             | direct-model intent match
+SLM parameter extraction   | no model loaded             | exact payload match
+Deterministic routing      | historical text fixtures    | spoken device reliability
+Action execution           | no new action trials        | observable completion
+Offline TTS                | installed voice metadata    | offline callback + audibility
+Every requested spoken/model/action result is NOT TESTED, not a pass and not a
+measured failure. Do not reuse the 48 historical fixture passes as SLM accuracy.
+
+REQUIRED VALIDATION TO CLOSE ACCEPTANCE
+1. Obtain weights through publisher-authorized access. Record repository revision,
+   file size, actual SHA-256 and declared quantization. Stage in app-private
+   command_models, load through the existing evaluator, verify native initialization
+   and run a direct inference. Capture load failure, timeout or crash as outcomes.
+2. Use Hindi/Hinglish commands such as "मेरे नोटिफिकेशन पढ़ो" / "notifications
+   padho", "माउंट एवरेस्ट खोजो" / "Mount Everest search karo", and "बैंगलोर का
+   मौसम बताओ" / "Bangalore ka weather batao". Repeat quiet/noisy conditions under
+   hi-IN and compare Hinglish under en-US. Current schema does not accept CALL_PHONE
+   as a direct model category; existing call templates are not an SLM benchmark.
+3. For each utterance record reference and actual STT transcript. Compute normalized
+   WER=(substitutions+deletions+insertions)/reference words, declaring script and
+   token normalization. Report intent/payload meaning separately from spelling.
+4. Evaluate gold text directly through CommandModel, bypassing template routing;
+   then evaluate the actual STT text through the same model. Report JSON validity,
+   intent match, parameter match and latency separately. This distinguishes model
+   errors from STT errors. No automatic action execution from benchmark outputs.
+5. Run safe authorized actions separately and observe completion: actual notification
+   readout or useful sourced search answer. A routed proposal, handoff or failure
+   speech is not successful execution. Search/weather still require online data.
+6. Offline check: disable both Wi-Fi and mobile data, explicitly select on-device
+   recognition with system fallback disallowed, verify Hindi installed support,
+   capture actual spoken recognition and synthesize using offline-only voices.
+   Record outcomes and human audibility; restore connectivity/settings afterward.
+   Repeat opted-in system STT online and identify its engine/mode. Do not infer
+   offline success from EXTRA_PREFER_OFFLINE or voice metadata alone.
+7. Record cold/warm latency and whole-process RAM for the verified artifact, then
+   decide whether bounded multilingual use is acceptable. No all-language rollout.
+
+RECOMMENDATION
+Feasibility verdict: AMBER - a bounded local Hindi/Hinglish command system is
+plausible from existing runtime and speech readiness, but model quality, resource
+fit and offline speech reliability are unmeasured. Acceptance verdict: RED until
+an authorized artifact is hash-verified, loaded and directly evaluated, followed
+by spoken and action trials. No unsupported all-language or fully offline claim.
+Proceed with a bounded Hindi/Hinglish evaluation once authorized weights and a
+speaker are available. Existing templates can remain the initial command path,
+but advertise neither validated local-SLM multilingual extraction nor a fully
+offline voice pipeline yet. Cloud AI is not required by this blocker; actual
+device results should determine whether a different model/provider is needed.
+
+NEW EVIDENCE
+android/app/src/androidTest/kotlin/com/example/voice_assistant/MultilingualReadinessDeviceTest.kt
+docs/benchmarks/multilingual-readiness-test-2026-10-12.txt
+docs/benchmarks/multilingual-readiness-2026-10-12.txt
+Publisher references checked 12 October 2026:
+[M1] https://huggingface.co/litert-community/gemma-3-270m-it/tree/main
+[M2] https://huggingface.co/google/functiongemma-270m-it
+[M3] https://huggingface.co/google/gemma-3-270m-it
+
+HISTORICAL APPENDIX - 9 OCTOBER (NOT CURRENT DEVICE CONFIGURATION)
+MULTILINGUAL SUPPORT - FEASIBILITY REPORT
+Date n : 9 October 2026 (Asia/Calcutta)
+Final recheck: connected A103SH inspected again after the initial report. Hindi
+is now selected (hi-IN); system recognition remains preferred and permitted.
+The command_models directory is still absent. The app files directory contains
+only profileInstalled; no saved benchmark export was found there. No new spoken
+transcripts, WER measurements, model outputs or action outcomes were available
+to score. This is the final evidence report for this check, not completed validation.
+Overall status: 🟠 AMBER. Bounded command templates are promising; actual multilingual
+speech, local SLM performance and successful device actions remain unvalidated.
+
+COLOR LEGEND
+🟢 GREEN - Validated within the stated test scope.
+🟠 AMBER - Partially validated; limitations or device tests remain.
+🔴 RED - Blocked; required validation cannot currently be completed.
+
+STATUS BY AREA
+🟢 GREEN - Deterministic text intent/parameter extraction for the 12 commands below.
+🟠 AMBER - Speech recognition: no spoken trials; WER/transcript accuracy unavailable.
+🔴 RED - Actual local SLM validation: blocked by absent model artifact. This is a
+validation blocker, not evidence that multilingual SLM inference is infeasible.
+🟠 AMBER - End-to-end action execution: no real actions attempted in this evaluation.
+🟠 AMBER - Fully local pipeline: local options exist, but current device selects system
+recognition and some actions explicitly use online services.
+
+REPRESENTATIVE COMMAND RESULTS
+Each row passed text-only deterministic intent extraction and applicable payload
+checks. Speech accuracy, SLM extraction and real action success are NOT TESTED
+for every row. Proposals are not successful action executions.
+
+Language | Command | Intent | Expected payload
+English | weather in Bangalore | GOOGLE_SEARCH | weather in Bangalore
+Hindi | बैंगलोर का मौसम बताओ | GOOGLE_SEARCH | weather in बैंगलोर
+Hinglish | Bangalore ka weather batao | GOOGLE_SEARCH | weather in Bangalore
+English | call Rahul | CALL_PHONE | Rahul
+Hindi | राहुल को कॉल करो | CALL_PHONE | राहुल
+Hinglish | Rahul ko call karo | CALL_PHONE | Rahul
+English | search for Mount Everest | GOOGLE_SEARCH | Mount Everest
+Hindi | माउंट एवरेस्ट खोजो | GOOGLE_SEARCH | माउंट एवरेस्ट
+Hinglish | Mount Everest search karo | GOOGLE_SEARCH | Mount Everest
+English | read notifications | READ_NOTIFICATION | defaults, no user payload
+Hindi | मेरे नोटिफिकेशन पढ़ो | READ_NOTIFICATION | defaults, no user payload
+Hinglish | notifications padho | READ_NOTIFICATION | defaults, no user payload
+
+TEST EVIDENCE
+Gradle :app:testDebugUnitTest succeeded with filters for MultilingualFeasibilityTest,
+HindiCommandsTest, IntentRouterTest, CommandModelTest, CoreActionsTest,
+EnglishRecognitionPolicyTest and SpeechOptionsConsentTest.
+48 tests passed: 12 new representative-command tests and 36 relevant regressions.
+Unit tests use text and test doubles, not live audio or native model inference.
+Command-model tests establish schema/routing behavior, not SLM accuracy.
+Core-action tests establish executor/reporting behavior with fake ports, not actual
+phone calls, notification readout, web retrieval or user-visible completion.
+
+EXACT MODEL AND RUNTIME
+Integrated runtime: com.google.ai.edge.litertlm:litertlm-android:0.17.1.
+Adapter: LiteRtCommandRuntime; CPU backend, 2048-token context, 384 output tokens,
+fresh conversation per command, automatic tool calling disabled, 45-second deadline.
+Exact deployed SLM model: NONE VERIFIED. No .litertlm or .gguf artifact was found
+in the workspace scan. On the connected A103SH, run-as reported that the expected
+files/command_models directory does not exist. No model was loaded by this session.
+The app supports explicit operator selection, SHA-256 verification and declared
+quantization. Model ID, hash, quantization, size, RAM and latency remain unavailable.
+Existing candidates in docs/tier2-command-model.md are Gemma 3 270M IT and
+FunctionGemma 270M; neither is established as the deployed or tested artifact.
+docs/benchmarks/command-model-pending.json contains null measurements and zero rows.
+Device inspection: A103SH, Android SDK 33, arm64-v8a. No app install or settings
+changes were performed. Source tests do not establish the installed APK's version.
+
+LOCAL VERSUS ONLINE
+Hindi/Hinglish template normalization and deterministic routing run locally.
+The command inference adapter reads a local file; it has no cloud-model fallback.
+STT uses Android SpeechRecognizer, not the SLM. Explicit on-device recognition is
+supported conditionally; installed provider language data and device support matter.
+Saved device preferences at final recheck: languageTag=hi-IN, allowSystemRecognition=true,
+preferSystemRecognition=true. System STT may send audio to its provider; actual
+network use is not established by these preferences. This is not a fully local claim.
+Hindi selection does not automatically grant online-recognition consent.
+TTS depends on installed engine/voice metadata; offline operation needs validation.
+Weather uses Open-Meteo geocoding/forecast HTTP endpoints. Web answers use
+DuckDuckGo; Google search launches a web URL. These actions require online services.
+Calls/notifications depend on permissions, roles, contact resolution and lock state;
+local command interpretation does not remove those requirements.
+
+LIMITATIONS AND MVP RECOMMENDATION
+Keep multilingual support 🟠 AMBER and bound any initial MVP claim to tested templates.
+Hindi reminder grammar, unrestricted paraphrases, general multilingual SLM accuracy,
+mixed-script contact resolution and complete response localization remain unproven.
+Some responses/dialogues remain English. Hinglish has no separate recognition locale;
+recognition quality must be compared under the supported en-US and hi-IN settings.
+Negated and conditional Hindi/Hinglish requests have existing blocking regression
+checks, but this small suite does not establish comprehensive linguistic safety.
+
+REMAINING VALIDATION TO CLOSE THE FEASIBILITY GATE
+1. Stage a publisher-permitted compatible model; record exact ID, SHA-256,
+   quantization, size and successful native load. Run direct-model extraction so
+   template routing cannot inflate SLM results. Include Hindi/Hinglish gold cases;
+   the existing command-v1 dataset is not multilingual validation evidence.
+2. Speak the 12 commands on target devices, repeating quiet/noisy trials under
+   each supported locale. Capture reference/actual transcripts, normalized WER,
+   intent match, parameter match, failures and measured latency separately.
+3. Test on-device STT and offline TTS with network disabled; also test the explicitly
+   opted-in system recognizer with network enabled. Record mode and availability.
+4. Execute safe actions such as notification reading/search with observable outcome
+   evidence; test calls only with an agreed test contact. Record handoffs, confirmation,
+   unlock/permission requirements and failures separately from completed actions.
+5. Run cold/warm SLM trials and measure whole-process RAM, latency and reliability
+   on representative devices before committing unrestricted multilingual MVP scope.
+
+SOURCE EVIDENCE
+android/app/src/main/kotlin/com/example/voice_assistant/intent/HindiCommands.kt
+android/app/src/main/kotlin/com/example/voice_assistant/intent/TieredIntentRouter.kt
+android/app/src/main/kotlin/com/example/voice_assistant/ai/LiteRtCommandRuntime.kt
+android/app/src/main/kotlin/com/example/voice_assistant/ai/LocalCommandModel.kt
+android/app/src/main/kotlin/com/example/voice_assistant/stt/AndroidSpeechToTextEngine.kt
+android/app/src/main/kotlin/com/example/voice_assistant/actions/WeatherSearch.kt
+android/app/src/main/kotlin/com/example/voice_assistant/actions/WebAnswerExecutor.kt
+android/app/src/test/kotlin/com/example/voice_assistant/MultilingualFeasibilityTest.kt
+build/app/test-results/testDebugUnitTest/TEST-*.xml
+KANNADA NAVIGATION UPDATE (2026-10-13)
+Kannada deterministic routing now recognizes take-me-to, show-directions, and
+navigate commands, including:
+  ನನ್ನನ್ನು ಬೆಂಗಳೂರು ವಿಮಾನ ನಿಲ್ದಾಣಕ್ಕೆ ಕರೆದುಕೊಂಡು ಹೋಗು
+  ಬೆಂಗಳೂರು ವಿಮಾನ ನಿಲ್ದಾಣಕ್ಕೆ ದಾರಿ ತೋರಿಸಿ
+Destination case endings ಗೆ/ಕ್ಕೆ are removed before passing the Kannada place
+name to Maps. Negated, incomplete and compound requests remain non-executable.
+This expands command templates; arbitrary Kannada language understanding and
+physical-device speech/navigation accuracy are not established by unit tests.
+
+KANNADA-ENGLISH MIXED COMMAND UPDATE (2026-10-13)
+Command routing accepts Kannada script mixed with English names/action words,
+and common Romanized Kannada command endings. Examples:
+  ನನ್ನನ್ನು Bangalore airport ಗೆ ಕರೆದುಕೊಂಡು ಹೋಗು
+  Bangalore airport ಗೆ take me
+  nannannu Bangalore airport ge karedukondu hogu
+  Rahul ge call maadu
+  Nifty 50 live price search maadi
+  notifications ಓದಿ
+Names and search queries retain their original spelling. This is template-based
+command support, not general translation or automatic STT language switching.
+Select Kannada for Kannada-led speech. Mixed-speech transcription accuracy
+depends on the phone's speech provider and remains unverified on a device.
+

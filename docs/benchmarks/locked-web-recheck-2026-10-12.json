@@ -1,0 +1,379 @@
+﻿[
+    {
+        "query":  "what is Kotlin",
+        "url":  "https://api.duckduckgo.com/?format=json\u0026no_html=1\u0026skip_disambig=1\u0026q=what%20is%20Kotlin",
+        "data":  {
+                     "Abstract":  "Kotlin is a cross-platform, statically typed, general-purpose high-level programming language with type inference. Kotlin is designed to interoperate fully with Java, and the Java virtual machine version of Kotlin\u0027s standard library depends on the Java Class Library. Type inference allows for more concise syntax than Java, while null-safety features reduce a common class of runtime errors. Kotlin mainly targets the JVM, but also compiles to JavaScript or native code via LLVM. JetBrains bears language development costs, while the Kotlin Foundation protects the Kotlin trademark. On 7 May 2019, Google announced Kotlin had become its preferred language for Android app developers. As of 2024, over 95% of the top 1,000 Android apps on Google Play contain Kotlin code. In May 2024, JetBrains released Kotlin 2.0 featuring the new K2 compiler—a complete rewrite offering up to twice the compilation speed of its predecessor—as well as stabilised support for Kotlin Multiplatform.",
+                     "AbstractSource":  "Wikipedia",
+                     "AbstractText":  "Kotlin is a cross-platform, statically typed, general-purpose high-level programming language with type inference. Kotlin is designed to interoperate fully with Java, and the Java virtual machine version of Kotlin\u0027s standard library depends on the Java Class Library. Type inference allows for more concise syntax than Java, while null-safety features reduce a common class of runtime errors. Kotlin mainly targets the JVM, but also compiles to JavaScript or native code via LLVM. JetBrains bears language development costs, while the Kotlin Foundation protects the Kotlin trademark. On 7 May 2019, Google announced Kotlin had become its preferred language for Android app developers. As of 2024, over 95% of the top 1,000 Android apps on Google Play contain Kotlin code. In May 2024, JetBrains released Kotlin 2.0 featuring the new K2 compiler—a complete rewrite offering up to twice the compilation speed of its predecessor—as well as stabilised support for Kotlin Multiplatform.",
+                     "AbstractURL":  "https://en.wikipedia.org/wiki/Kotlin",
+                     "Answer":  "",
+                     "AnswerType":  "",
+                     "Definition":  "",
+                     "DefinitionSource":  "",
+                     "DefinitionURL":  "",
+                     "Entity":  "programming language",
+                     "Heading":  "Kotlin",
+                     "Image":  "",
+                     "ImageHeight":  0,
+                     "ImageIsLogo":  0,
+                     "ImageWidth":  0,
+                     "Infobox":  {
+                                     "content":  [
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "Paradigms",
+                                                         "value":  "Multi-paradigm: object-oriented, functional, imperative, block structured, generic, reflective, concurrent",
+                                                         "wiki_order":  0
+                                                     },
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "Family",
+                                                         "value":  "JVM-hosted",
+                                                         "wiki_order":  1
+                                                     },
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "Designed by",
+                                                         "value":  "Andrey Breslav, JetBrains",
+                                                         "wiki_order":  2
+                                                     },
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "Developer",
+                                                         "value":  "JetBrains",
+                                                         "wiki_order":  3
+                                                     },
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "First appeared",
+                                                         "value":  "July 22, 2011",
+                                                         "wiki_order":  4
+                                                     },
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "Typing discipline",
+                                                         "value":  "Inferred, static, strong",
+                                                         "wiki_order":  5
+                                                     },
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "Platform",
+                                                         "value":  "Android, JVM, iOS, iPadOS (tier 1), tvOS, watchOS (tier 2 support), macOS (with tier 1 support for Apple silicon), Linux, Windows, JavaScript (Kotlin/JS), WebAssembly (and WASI) in beta support, LLVM (Kotlin/Native)",
+                                                         "wiki_order":  6
+                                                     },
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "OS",
+                                                         "value":  "Cross-platform",
+                                                         "wiki_order":  7
+                                                     },
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "License",
+                                                         "value":  "Apache 2.0",
+                                                         "wiki_order":  8
+                                                     },
+                                                     {
+                                                         "data_type":  "string",
+                                                         "label":  "Filename extensions",
+                                                         "value":  "kt.kts.kexe.klib",
+                                                         "wiki_order":  9
+                                                     },
+                                                     {
+                                                         "data_type":  "github_profile",
+                                                         "label":  "GitHub profile",
+                                                         "value":  "Kotlin",
+                                                         "wiki_order":  "101"
+                                                     },
+                                                     {
+                                                         "data_type":  "twitter_profile",
+                                                         "label":  "Twitter profile",
+                                                         "value":  "kotlin",
+                                                         "wiki_order":  "102"
+                                                     },
+                                                     {
+                                                         "data_type":  "youtube_channel",
+                                                         "label":  "Youtube channel",
+                                                         "value":  "UCP7uiEZIqci43m22KDl0sNw",
+                                                         "wiki_order":  "105"
+                                                     },
+                                                     {
+                                                         "data_type":  "instance",
+                                                         "label":  "Instance of",
+                                                         "value":  {
+                                                                       "entity-type":  "item",
+                                                                       "id":  "Q56062429",
+                                                                       "numeric-id":  56062429
+                                                                   },
+                                                         "wiki_order":  "207"
+                                                     },
+                                                     {
+                                                         "data_type":  "instance_2",
+                                                         "label":  "Instance of",
+                                                         "value":  {
+                                                                       "entity-type":  "item",
+                                                                       "id":  "Q341",
+                                                                       "numeric-id":  341
+                                                                   },
+                                                         "wiki_order":  "207"
+                                                     },
+                                                     {
+                                                         "data_type":  "instance_3",
+                                                         "label":  "Instance of",
+                                                         "value":  {
+                                                                       "entity-type":  "item",
+                                                                       "id":  "Q899523",
+                                                                       "numeric-id":  899523
+                                                                   },
+                                                         "wiki_order":  "207"
+                                                     },
+                                                     {
+                                                         "data_type":  "official_website",
+                                                         "label":  "Official Website",
+                                                         "value":  "https://kotlinlang.org/",
+                                                         "wiki_order":  "208"
+                                                     },
+                                                     {
+                                                         "data_type":  "wd_description",
+                                                         "label":  "Wikidata description",
+                                                         "value":  "general-purpose programming language derived from Java",
+                                                         "wiki_order":  "210"
+                                                     },
+                                                     {
+                                                         "data_type":  "wikidata_id",
+                                                         "label":  "Wikidata id",
+                                                         "value":  "Q3816639",
+                                                         "wiki_order":  "211"
+                                                     },
+                                                     {
+                                                         "data_type":  "wikidata_label",
+                                                         "label":  "Wikidata label",
+                                                         "value":  "Kotlin",
+                                                         "wiki_order":  "212"
+                                                     },
+                                                     {
+                                                         "data_type":  "wikidata_aliases",
+                                                         "label":  "Wikidata aliases",
+                                                         "value":  [
+                                                                       "Kotlin"
+                                                                   ],
+                                                         "wiki_order":  "213"
+                                                     }
+                                                 ],
+                                     "meta":  [
+                                                  {
+                                                      "data_type":  "string",
+                                                      "label":  "article_title",
+                                                      "value":  "Kotlin"
+                                                  },
+                                                  {
+                                                      "data_type":  "string",
+                                                      "label":  "template_name",
+                                                      "value":  "infobox programming language"
+                                                  }
+                                              ]
+                                 },
+                     "OfficialDomain":  "kotlinlang.org",
+                     "OfficialWebsite":  "https://kotlinlang.org/",
+                     "Redirect":  "",
+                     "RelatedTopics":  [
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/Outline_of_the_Java_programming_language",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/Outline_of_the_Java_programming_language\"\u003eOutline of the Java programming language\u003c/a\u003e - The following outline is provided as an overview of and topical guide to Java: Java is a general-purpose, concurrent, object-oriented, class-based, strong, and statically typed programming language that is compiled to JVM bytecode for execution on a Java virtual machine, which allows \"write once...",
+                                               "Text":  "Outline of the Java programming language - The following outline is provided as an overview of and topical guide to Java: Java is a general-purpose, concurrent, object-oriented, class-based, strong, and statically typed programming language that is compiled to JVM bytecode for execution on a Java virtual machine, which allows \"write once..."
+                                           },
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/c/Java_programming_language_family",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/c/Java_programming_language_family\"\u003eJava programming language family\u003c/a\u003e",
+                                               "Text":  "Java programming language family"
+                                           },
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/c/Extensible_syntax_programming_languages",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/c/Extensible_syntax_programming_languages\"\u003eExtensible syntax programming languages\u003c/a\u003e",
+                                               "Text":  "Extensible syntax programming languages"
+                                           },
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/c/JVM_programming_languages",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/c/JVM_programming_languages\"\u003eJVM programming languages\u003c/a\u003e",
+                                               "Text":  "JVM programming languages"
+                                           },
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/c/Statically_typed_programming_languages",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/c/Statically_typed_programming_languages\"\u003eStatically typed programming languages\u003c/a\u003e",
+                                               "Text":  "Statically typed programming languages"
+                                           },
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/c/High-level_programming_languages",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/c/High-level_programming_languages\"\u003eHigh-level programming languages\u003c/a\u003e",
+                                               "Text":  "High-level programming languages"
+                                           },
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/c/Free_software_projects",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/c/Free_software_projects\"\u003eFree software projects\u003c/a\u003e",
+                                               "Text":  "Free software projects"
+                                           },
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/c/Object-oriented_programming_languages",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/c/Object-oriented_programming_languages\"\u003eObject-oriented programming languages\u003c/a\u003e",
+                                               "Text":  "Object-oriented programming languages"
+                                           },
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/c/Programming_languages",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/c/Programming_languages\"\u003eProgramming languages\u003c/a\u003e",
+                                               "Text":  "Programming languages"
+                                           },
+                                           {
+                                               "FirstURL":  "https://duckduckgo.com/c/Software_using_the_Apache_license",
+                                               "Icon":  {
+                                                            "Height":  "",
+                                                            "URL":  "",
+                                                            "Width":  ""
+                                                        },
+                                               "Result":  "\u003ca href=\"https://duckduckgo.com/c/Software_using_the_Apache_license\"\u003eSoftware using the Apache license\u003c/a\u003e",
+                                               "Text":  "Software using the Apache license"
+                                           }
+                                       ],
+                     "Results":  [
+                                     {
+                                         "FirstURL":  "https://kotlinlang.org/",
+                                         "Icon":  {
+                                                      "Height":  16,
+                                                      "URL":  "/i/kotlinlang.org.ico",
+                                                      "Width":  16
+                                                  },
+                                         "Result":  "\u003ca href=\"https://kotlinlang.org/\"\u003eOfficial site\u003c/a\u003e\u003ca href=\"https://kotlinlang.org/\"\u003e\u003c/a\u003e",
+                                         "Text":  "Official site"
+                                     }
+                                 ],
+                     "Type":  "A",
+                     "meta":  {
+                                  "attribution":  null,
+                                  "blockgroup":  null,
+                                  "created_date":  null,
+                                  "description":  "Wikipedia",
+                                  "designer":  null,
+                                  "dev_date":  null,
+                                  "dev_milestone":  "live",
+                                  "developer":  [
+                                                    {
+                                                        "name":  "DDG Team",
+                                                        "type":  "ddg",
+                                                        "url":  "http://www.duckduckhack.com"
+                                                    }
+                                                ],
+                                  "example_query":  "nikola tesla",
+                                  "id":  "wikipedia_fathead",
+                                  "is_stackexchange":  null,
+                                  "js_callback_name":  "wikipedia",
+                                  "live_date":  null,
+                                  "maintainer":  {
+                                                     "github":  "duckduckgo"
+                                                 },
+                                  "name":  "Wikipedia",
+                                  "perl_module":  "DDG::Fathead::Wikipedia",
+                                  "producer":  null,
+                                  "production_state":  "online",
+                                  "repo":  "fathead",
+                                  "signal_from":  "wikipedia_fathead",
+                                  "src_domain":  "en.wikipedia.org",
+                                  "src_id":  1,
+                                  "src_name":  "Wikipedia",
+                                  "src_options":  {
+                                                      "directory":  "",
+                                                      "is_fanon":  0,
+                                                      "is_mediawiki":  1,
+                                                      "is_wikipedia":  1,
+                                                      "language":  "en",
+                                                      "min_abstract_length":  "20",
+                                                      "skip_abstract":  0,
+                                                      "skip_abstract_paren":  0,
+                                                      "skip_end":  "0",
+                                                      "skip_icon":  0,
+                                                      "skip_image_name":  0,
+                                                      "skip_qr":  "",
+                                                      "source_skip":  "",
+                                                      "src_info":  ""
+                                                  },
+                                  "src_url":  null,
+                                  "status":  "live",
+                                  "tab":  "About",
+                                  "topic":  [
+                                                "productivity"
+                                            ],
+                                  "unsafe":  0
+                              }
+                 }
+    },
+    {
+        "query":  "Bengaluru",
+        "url":  "https://geocoding-api.open-meteo.com/v1/search?name=Bengaluru\u0026count=10\u0026countryCode=IN\u0026language=en\u0026format=json",
+        "data":  {
+                     "results":  [
+                                     {
+                                         "id":  1277333,
+                                         "name":  "Bengaluru",
+                                         "latitude":  12.97194,
+                                         "longitude":  77.59369,
+                                         "elevation":  920.0,
+                                         "feature_code":  "PPLA",
+                                         "country_code":  "IN",
+                                         "admin1_id":  1267701,
+                                         "admin2_id":  1277331,
+                                         "timezone":  "Asia/Kolkata",
+                                         "population":  8495492,
+                                         "country_id":  1269750,
+                                         "country":  "India",
+                                         "admin1":  "Karnataka",
+                                         "admin2":  "Bengaluru Urban"
+                                     }
+                                 ],
+                     "generationtime_ms":  0.37407875
+                 }
+    }
+]

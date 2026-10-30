@@ -1,0 +1,350 @@
+﻿[
+    {
+        "query":  "Mount Everest",
+        "elapsedMs":  459,
+        "relatedTopics":  [
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Mount_Everest",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Mount_Everest\"\u003eMount Everest Category\u003c/a\u003e",
+                                  "Text":  "Mount Everest Category"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/Summits_farthest_from_the_Earth\u0027s_center",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/Summits_farthest_from_the_Earth\u0027s_center\"\u003eSummits farthest from the Earth\u0027s center\u003c/a\u003e - Although Mount Everest is the point with the highest elevation above sea level on the Earth, it is not the summit that is farthest from the Earth\u0027s center.",
+                                  "Text":  "Summits farthest from the Earth\u0027s center - Although Mount Everest is the point with the highest elevation above sea level on the Earth, it is not the summit that is farthest from the Earth\u0027s center."
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/Mount_Everest_in_popular_culture",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/Mount_Everest_in_popular_culture\"\u003eMount Everest in popular culture\u003c/a\u003e - This is a list of media content related to Mount Everest, the Earth\u0027s highest mountain, with an elevation of 8,848 metres above sea level. Mount Everest was identified as such in the 19th century as a result of a geographical survey conducted by the British Empire.",
+                                  "Text":  "Mount Everest in popular culture - This is a list of media content related to Mount Everest, the Earth\u0027s highest mountain, with an elevation of 8,848 metres above sea level. Mount Everest was identified as such in the 19th century as a result of a geographical survey conducted by the British Empire."
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/Mount_Hood_climbing_accidents",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/Mount_Hood_climbing_accidents\"\u003eMount Hood climbing accidents\u003c/a\u003e - Mount Hood climbing accidents are incidents related to mountain climbing or hiking on Oclimb the mountain each year. As of May 2002, more than 130 people are known to have died climbing Mount Hood since records have been kept.",
+                                  "Text":  "Mount Hood climbing accidents - Mount Hood climbing accidents are incidents related to mountain climbing or hiking on Oclimb the mountain each year. As of May 2002, more than 130 people are known to have died climbing Mount Hood since records have been kept."
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/Mukhiyapatti_Musharniya_Rural_Municipality",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/Mukhiyapatti_Musharniya_Rural_Municipality\"\u003eMukhiyapatti Musharniya\u003c/a\u003e – The lowest point of Nepal.",
+                                  "Text":  "Mukhiyapatti Musharniya – The lowest point of Nepal."
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/Timeline_of_Mount_Everest_expeditions",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/Timeline_of_Mount_Everest_expeditions\"\u003eTimeline of Mount Everest expeditions\u003c/a\u003e - Mount Everest is the world\u0027s highest mountain, with a peak at 8,848.86 m above sea level. It is situated in the Himalayan range of Solukhumbu district, Nepal.",
+                                  "Text":  "Timeline of Mount Everest expeditions - Mount Everest is the world\u0027s highest mountain, with a peak at 8,848.86 m above sea level. It is situated in the Himalayan range of Solukhumbu district, Nepal."
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Extreme_points_of_Asia",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Extreme_points_of_Asia\"\u003eExtreme points of Asia\u003c/a\u003e",
+                                  "Text":  "Extreme points of Asia"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Tourist_attractions_in_Nepal",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Tourist_attractions_in_Nepal\"\u003eTourist attractions in Nepal\u003c/a\u003e",
+                                  "Text":  "Tourist attractions in Nepal"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Highest_points_of_Chinese_provinces",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Highest_points_of_Chinese_provinces\"\u003eHighest points of Chinese provinces\u003c/a\u003e",
+                                  "Text":  "Highest points of Chinese provinces"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Seven_Summits",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Seven_Summits\"\u003eSeven Summits\u003c/a\u003e",
+                                  "Text":  "Seven Summits"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/China%E2%80%93Nepal_border",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/China%E2%80%93Nepal_border\"\u003eChina–Nepal border\u003c/a\u003e",
+                                  "Text":  "China–Nepal border"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Shigatse",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Shigatse\"\u003eShigatse\u003c/a\u003e",
+                                  "Text":  "Shigatse"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Mountaineering_disasters",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Mountaineering_disasters\"\u003eMountaineering disasters\u003c/a\u003e",
+                                  "Text":  "Mountaineering disasters"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Mountains_of_Tibet",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Mountains_of_Tibet\"\u003eMountains of Tibet\u003c/a\u003e",
+                                  "Text":  "Mountains of Tibet"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/International_mountains_of_Asia",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/International_mountains_of_Asia\"\u003eInternational mountains of Asia\u003c/a\u003e",
+                                  "Text":  "International mountains of Asia"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Highest_points_of_countries",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Highest_points_of_countries\"\u003eHighest points of countries\u003c/a\u003e",
+                                  "Text":  "Highest points of countries"
+                              }
+                          ],
+        "url":  "https://api.duckduckgo.com/?format=json\u0026no_html=1\u0026skip_disambig=1\u0026q=Mount%20Everest",
+        "observedAt":  "2026-10-09T15:57:03.3623207+05:30",
+        "source":  "https://en.wikipedia.org/wiki/Mount_Everest",
+        "status":  "HTTP_SUCCESS",
+        "scope":  "WORKSTATION_PROVIDER_PROBE_NOT_LOCKED_PHONE",
+        "provider":  "DUCKDUCKGO_INSTANT_ANSWERS",
+        "abstract":  "Mount Everest known in Nepali as Sagarmāthā, in Sherpa as Chamolangma, and in Tibetan as Jomolangma/Čhomolangma is the highest mountain on Earth above sea level. It lies in the Mahalangur Himal sub-range of the Himalayas and marks part of the China–Nepal border at its summit. Its height was most recently measured in 2020 through a joint survey by Nepalese and Chinese authorities as 8,848.86 m. Mount Everest attracts many climbers, including highly experienced mountaineers. There are two main climbing routes, one approaching the summit from the southeast in Nepal and the other from the north in China. While not posing substantial technical climbing challenges on the standard route, Everest presents dangers such as altitude sickness, weather, and wind, as well as hazards from avalanches and the Khumbu Icefall. As of May 2024, 340 people have died on Everest. Over 200 bodies remain on the mountain and have not been removed due to the dangerous conditions."
+    },
+    {
+        "query":  "what is Kotlin",
+        "elapsedMs":  103,
+        "relatedTopics":  [
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/Outline_of_the_Java_programming_language",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/Outline_of_the_Java_programming_language\"\u003eOutline of the Java programming language\u003c/a\u003e - The following outline is provided as an overview of and topical guide to Java: Java is a general-purpose, concurrent, object-oriented, class-based, strong, and statically typed programming language that is compiled to JVM bytecode for execution on a Java virtual machine, which allows \"write once...",
+                                  "Text":  "Outline of the Java programming language - The following outline is provided as an overview of and topical guide to Java: Java is a general-purpose, concurrent, object-oriented, class-based, strong, and statically typed programming language that is compiled to JVM bytecode for execution on a Java virtual machine, which allows \"write once..."
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Java_programming_language_family",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Java_programming_language_family\"\u003eJava programming language family\u003c/a\u003e",
+                                  "Text":  "Java programming language family"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Extensible_syntax_programming_languages",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Extensible_syntax_programming_languages\"\u003eExtensible syntax programming languages\u003c/a\u003e",
+                                  "Text":  "Extensible syntax programming languages"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/JVM_programming_languages",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/JVM_programming_languages\"\u003eJVM programming languages\u003c/a\u003e",
+                                  "Text":  "JVM programming languages"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Statically_typed_programming_languages",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Statically_typed_programming_languages\"\u003eStatically typed programming languages\u003c/a\u003e",
+                                  "Text":  "Statically typed programming languages"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/High-level_programming_languages",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/High-level_programming_languages\"\u003eHigh-level programming languages\u003c/a\u003e",
+                                  "Text":  "High-level programming languages"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Free_software_projects",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Free_software_projects\"\u003eFree software projects\u003c/a\u003e",
+                                  "Text":  "Free software projects"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Object-oriented_programming_languages",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Object-oriented_programming_languages\"\u003eObject-oriented programming languages\u003c/a\u003e",
+                                  "Text":  "Object-oriented programming languages"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Programming_languages",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Programming_languages\"\u003eProgramming languages\u003c/a\u003e",
+                                  "Text":  "Programming languages"
+                              },
+                              {
+                                  "FirstURL":  "https://duckduckgo.com/c/Software_using_the_Apache_license",
+                                  "Icon":  {
+                                               "Height":  "",
+                                               "URL":  "",
+                                               "Width":  ""
+                                           },
+                                  "Result":  "\u003ca href=\"https://duckduckgo.com/c/Software_using_the_Apache_license\"\u003eSoftware using the Apache license\u003c/a\u003e",
+                                  "Text":  "Software using the Apache license"
+                              }
+                          ],
+        "url":  "https://api.duckduckgo.com/?format=json\u0026no_html=1\u0026skip_disambig=1\u0026q=what%20is%20Kotlin",
+        "observedAt":  "2026-10-09T15:57:03.4818029+05:30",
+        "source":  "https://en.wikipedia.org/wiki/Kotlin",
+        "status":  "HTTP_SUCCESS",
+        "scope":  "WORKSTATION_PROVIDER_PROBE_NOT_LOCKED_PHONE",
+        "provider":  "DUCKDUCKGO_INSTANT_ANSWERS",
+        "abstract":  "Kotlin is a cross-platform, statically typed, general-purpose high-level programming language with type inference. Kotlin is designed to interoperate fully with Java, and the Java virtual machine version of Kotlin\u0027s standard library depends on the Java Class Library. Type inference allows for more concise syntax than Java, while null-safety features reduce a common class of runtime errors. Kotlin mainly targets the JVM, but also compiles to JavaScript or native code via LLVM. JetBrains bears language development costs, while the Kotlin Foundation protects the Kotlin trademark. On 7 May 2019, Google announced Kotlin had become its preferred language for Android app developers. As of 2024, over 95% of the top 1,000 Android apps on Google Play contain Kotlin code. In May 2024, JetBrains released Kotlin 2.0 featuring the new K2 compiler—a complete rewrite offering up to twice the compilation speed of its predecessor—as well as stabilised support for Kotlin Multiplatform."
+    },
+    {
+        "query":  "weather in Bangalore",
+        "place":  {
+                      "id":  7046295,
+                      "name":  "Bangalore Town",
+                      "latitude":  24.8717,
+                      "longitude":  67.0839,
+                      "elevation":  16.0,
+                      "feature_code":  "PPLX",
+                      "country_code":  "PK",
+                      "admin1_id":  1164807,
+                      "admin2_id":  11744832,
+                      "timezone":  "Asia/Karachi",
+                      "country_id":  1168579,
+                      "country":  "Pakistan",
+                      "admin1":  "Sindh",
+                      "admin2":  "Karachi East District"
+                  },
+        "geocodingUrl":  "https://geocoding-api.open-meteo.com/v1/search?name=Bangalore\u0026count=1\u0026language=en\u0026format=json",
+        "current":  {
+                        "time":  "2026-10-09T15:15",
+                        "interval":  900,
+                        "temperature_2m":  31.0,
+                        "apparent_temperature":  33.2,
+                        "weather_code":  1
+                    },
+        "provider":  "OPEN_METEO",
+        "url":  "https://api.open-meteo.com/v1/forecast?latitude=24.8717\u0026longitude=67.0839\u0026current=temperature_2m,apparent_temperature,weather_code\u0026temperature_unit=celsius\u0026timezone=auto",
+        "observedAt":  "2026-10-09T15:57:05.1211446+05:30",
+        "status":  "HTTP_SUCCESS",
+        "scope":  "WORKSTATION_PROVIDER_PROBE_NOT_LOCKED_PHONE",
+        "timezone":  "Asia/Karachi",
+        "elapsedMs":  1641
+    },
+    {
+        "query":  "latest India news today",
+        "elapsedMs":  96,
+        "relatedTopics":  [
+
+                          ],
+        "url":  "https://api.duckduckgo.com/?format=json\u0026no_html=1\u0026skip_disambig=1\u0026q=latest%20India%20news%20today",
+        "observedAt":  "2026-10-09T15:57:05.2199130+05:30",
+        "source":  "",
+        "status":  "HTTP_SUCCESS",
+        "scope":  "WORKSTATION_PROVIDER_PROBE_NOT_LOCKED_PHONE",
+        "provider":  "DUCKDUCKGO_INSTANT_ANSWERS",
+        "abstract":  ""
+    },
+    {
+        "query":  "live Reliance Industries share price",
+        "elapsedMs":  102,
+        "relatedTopics":  [
+
+                          ],
+        "url":  "https://api.duckduckgo.com/?format=json\u0026no_html=1\u0026skip_disambig=1\u0026q=live%20Reliance%20Industries%20share%20price",
+        "observedAt":  "2026-10-09T15:57:05.3202868+05:30",
+        "source":  "",
+        "status":  "HTTP_SUCCESS",
+        "scope":  "WORKSTATION_PROVIDER_PROBE_NOT_LOCKED_PHONE",
+        "provider":  "DUCKDUCKGO_INSTANT_ANSWERS",
+        "abstract":  ""
+    }
+]

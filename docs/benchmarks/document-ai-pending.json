@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "dataset": "document_validation_v1",
+  "documentCount": 5,
+  "questionCountPerDocument": 6,
+  "status": "PENDING_DEVICE_EXECUTION",
+  "modelId": null,
+  "modelSha256": null,
+  "cameraValidated": false,
+  "ocrAccuracy": null,
+  "semanticAccuracy": null,
+  "voiceValidated": false,
+  "rows": [],
+  "reason": "Capture/OCR/model/voice implementation and synthetic fixture harness exist; no physical-device model run or camera demonstration is claimed."
+}

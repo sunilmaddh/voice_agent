@@ -1,0 +1,7 @@
+<voice-interaction-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:sessionService="com.example.voice_assistant.lockscreen.AikoSessionService"
+    android:recognitionService="com.example.voice_assistant.stt.AssistantRecognitionService"
+    android:settingsActivity="com.example.voice_assistant.MainActivity"
+    android:supportsAssist="true"
+    android:supportsLaunchVoiceAssistFromKeyguard="true"
+    android:supportsLocalInteraction="false" />

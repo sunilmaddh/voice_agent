@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "command-v1",
+  "datasetSize": 38,
+  "status": "PENDING_DEVICE_EXECUTION",
+  "reason": "No model artifact staged or loaded. Connected-device inventory is not inference validation.",
+  "modelId": null,
+  "modelSha256": null,
+  "modelSizeBytes": null,
+  "modelLoadMs": null,
+  "processPssSampledPeakKb": null,
+  "inferenceLatencyMs": null,
+  "structuredOutputSuccessRate": null,
+  "intentAccuracy": null,
+  "parameterAccuracy": null,
+  "correctIntent": null,
+  "incorrectIntent": null,
+  "parameterExtractionFailure": null,
+  "confidence": null,
+  "rows": []
+}

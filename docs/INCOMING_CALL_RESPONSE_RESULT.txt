@@ -1,0 +1,198 @@
+INCOMING-CALL RESPONSE - TEST RESULTS AND FEASIBILITY REPORT
+Date: 9 October 2026 (Asia/Calcutta)
+Overall SMS status: 🟠 AMBER - user reports operation while locked and unlocked
+in silent/vibration modes; Aiko does not listen with an audible ringtone.
+Reliable operation across ringtone modes and recipient delivery remain unconfirmed.
+Spoken message on ordinary SIM calls: 🔴 RED for the current third-party APK.
+Supported alternative architecture: 🟠 AMBER - feasible in principle with
+network-side call handling or app-owned VoIP; deployment not validated.
+
+RESULT
+The implemented reply sends the fixed SMS "I will call you later." using the
+incoming call's SIM, then requests decline only after Android reports successful
+sending. It does not answer the call and play a recording to the caller.
+The connected physical phone contains CALL_REPLY_SMS_SENT_DECLINE_REQUESTED at
+09:30:13 IST today. This establishes a recorded sent-receipt/decline-request
+outcome, not observed recipient delivery, actual disconnect or locked reliability.
+Subsequent physical-device feedback: the user reports the workflow works when
+the phone is silent or in vibration mode, both unlocked and locked. With an
+audible ringtone, Aiko does not listen. This establishes conditional operator-
+reported operation, not reliable operation across all incoming-call audio modes.
+SMS receipt and actual disconnect were not individually described in that feedback.
+No workaround was implemented and no call/SMS was initiated by this evaluation.
+
+STATUS LEGEND
+🟢 GREEN - Passed within the stated scope.
+🟠 AMBER - Partial evidence, conditional feasibility or missing validation.
+🔴 RED   - Requirement not supported in the assessed deployment.
+
+STATUS BY AREA
+Area                         | Status   | Evidence / result
+Device setup                 | 🟢 GREEN | Aiko is default Phone; SEND_SMS and
+                             |          | READ_PHONE_STATE granted at inspection.
+SMS send / decline request   | 🟠 AMBER | One persisted successful sent-receipt
+                             |          | outcome; exact triggering path unknown.
+Recipient SMS delivery       | 🟠 AMBER | No delivery callback or caller confirmation.
+Actual call decline          | 🟠 AMBER | Request recorded; disconnect not observed.
+Locked explicit voice reply  | 🟠 AMBER | User reports operation in silent/vibration
+                             |          | modes; audible ringtone prevents listening.
+Unlocked explicit voice reply| 🟠 AMBER | Same conditional operation reported;
+                             |          | ringtone mode fails to capture the command.
+Silent/vibration operation   | 🟠 AMBER | Works in user-reported locked/unlocked
+                             |          | trials; counts, timings and delivery absent.
+Audible-ringtone operation   | 🔴 RED   | User reports Aiko does not listen while
+                             |          | the audible ringtone is playing.
+Manual reply while locked    | 🔴 RED   | Manual review requires unlock by design;
+                             |          | distinct from the direct voice shortcut.
+Repeated locked reliability  | 🟠 AMBER | No repeated-trial counts or timings supplied.
+Voice/audio while ringing    | 🟠 AMBER | Conditional success; audible-ringtone
+                             |          | failure observed by user. Cause unresolved.
+Failure / duplicate handling | 🟢 GREEN | Relevant fixture tests passed; actual
+                             |          | carrier failure scenarios remain untested.
+Regression tests             | 🟢 GREEN | 23 passed, zero failures/errors.
+SIM-call prerecorded audio   | 🔴 RED   | No ordinary public SDK uplink injection
+                             |          | route established for this APK.
+Hosted voice / app-owned VoIP| 🟠 AMBER | Supported architecture in principle;
+                             |          | account, routing and deployment unvalidated.
+OEM privileged integration   | 🟠 AMBER | Conditional system-level feasibility;
+                             |          | requires OEM participation and device support.
+
+PHYSICAL-DEVICE INSPECTION
+Connected device: A103SH. Default Phone role: com.example.voice_assistant.
+Installed versionName=1.0.0, versionCode=1, targetSdk=36. These version values do
+not prove the installed APK matches the current workspace source.
+SEND_SMS and READ_PHONE_STATE were granted. Keyguard showing=false and screen ON
+at inspection, so this was an unlocked snapshot, not a new locked-call trial.
+Metadata-only shared_prefs/call_reply_sms_result.xml contained:
+  lastCode: CALL_REPLY_SMS_SENT_DECLINE_REQUESTED
+  timestampMs: 1791518413922 (9 October 2026, 09:30:13 +05:30).
+The record stores the latest outcome only. It contains no attempt count, lock
+state, triggering command, caller delivery result or decline-completion evidence.
+No caller numbers or message contents were retrieved for this assessment.
+
+SUBSEQUENT USER-REPORTED PHYSICAL TRIALS
+Feedback: "when call is ring it is not listing only it is working when phone
+silent and vibration mode with both mode like phone unlock and phone locked".
+Interpretation in context: Aiko does not listen with audible ringing, but the
+workflow works in silent/vibration modes in both lock states. Exact recognized
+command, SMS recipient receipt, decline completion, trial count and timing were
+not supplied. The persisted successful outcome cannot be tied to these trials.
+Ringtone masking, audio focus, microphone ownership or activation failure are
+possible explanations; none is established by the available evidence.
+
+CURRENT WORKFLOW AND LOCKED LIMITATIONS
+1. The complete command "decline the call and text I will call you later"
+   authorizes one fixed reply for exactly one ringing call. Source permits this
+   explicit voice path while locked. A short/incomplete or negated command is
+   not equivalent authorization. Anyone able to invoke the locked assistant
+   may request this fixed reply where prerequisites are satisfied.
+2. Requires Android 11+, default Phone role, SEND_SMS, READ_PHONE_STATE, a visible
+   usable tel number and an identifiable incoming-call subscription. Hidden
+   numbers, invalid handles and ambiguous/multiple ringing calls are blocked.
+3. SmsManager submits the SMS on that subscription. CALL_REPLY_SMS_PENDING means
+   submitted/waiting, not sent or delivered. The API's sent callback establishes
+   Android send success; recipient receipt requires separate observation.
+4. RESULT_OK permits Call.reject(false, null) only for the same still-ringing
+   eligible call within 60 seconds. Duplicate callbacks cannot decline twice.
+   Failures/timeouts do not initiate decline; a late success can mean an SMS
+   was sent while the call remains unchanged. An already submitted SMS cannot
+   be recalled. There are no automatic send retries.
+5. Manual call-screen review requires unlock. Previously enabled automatic
+   driving replies are a separate path with their own settings. The persisted
+   outcome cannot identify which of these paths generated it.
+6. Ringtone silencing/wake handoff mitigates competing audio, but does not prove
+   recognition works during ringing. Screen-off invocation, Bluetooth, dual-SIM,
+   carrier restrictions and OEM lifecycle behavior require physical trials.
+
+REGRESSION RESULTS
+IncomingCallReplyTest: 9 passed; VoiceCallReplyTest: 3 passed;
+CallReplyAccessTest: 4 passed; SmsReplyCompletionTest: 4 passed;
+IncomingRingStateTest: 3 passed. Total: 23 passed, zero failures/errors.
+Gradle :app:testDebugUnitTest ran with these five class filters successfully.
+Coverage includes reviewed-call validation, expiry/cancellation, voice routing,
+locked/unlocked policy, send-before-speech ordering, send failure without decline,
+single-use receipts, stale-call rejection and decline failure without retries.
+These are text/fixture tests, not carrier delivery or physical voice trials.
+
+SPOKEN-MESSAGE TECHNICAL FEASIBILITY
+A. Ordinary installed APK answering a SIM call and injecting a recording: 🔴 RED.
+   Android Call.answer can request answering, and InCallService can control call
+   endpoints [1][2]. These controls do not provide a public stream for sending
+   arbitrary recorded audio into the cellular call. Current AOSP provides an
+   uplink-injection SystemApi guarded by CALL_AUDIO_INTERCEPTION and explicitly
+   reserved for privileged system apps [3]. AOSP routing tests also establish
+   that ordinary playback cannot route to telephony uplink without privileged
+   permission [4]. Assessment: the existing APK/default Phone role is insufficient.
+   Local TTS/MediaPlayer playback is not a supported guarantee that the caller
+   hears a recording. Speaker-to-microphone coupling would be unreliable with
+   noise, echo cancellation and headsets and is not recommended as a workaround.
+
+B. Hosted telephony/IVR with a service number or carrier forwarding: 🟠 AMBER.
+   This is a technically supported alternative: a service handles the incoming
+   call and plays the recording on its own voice connection. Twilio documents
+   incoming-call webhooks and the Play instruction for caller-facing audio [5][6].
+   Feasibility is established at architecture level, not for this user's SIM or
+   deployment. Requires compatible number availability or carrier forwarding,
+   hosted configuration/media, applicable account setup and recurring service/
+   carrier charges. Regional availability and forwarding behavior need checking.
+   Phone lock does not govern server playback once a call reaches the service.
+   A per-call spoken command on the phone to divert/control that call introduces
+   extra signalling and timing requirements; static forwarding is not equivalent
+   to Aiko answering the original SIM call on demand. No provider was selected.
+
+C. App-owned VoIP/SIP media: 🟠 AMBER.
+   Feasible in principle when Aiko or its telephony backend owns the call media
+   and can transmit recorded audio. This is an architectural inference, not an
+   existing Aiko capability. It requires a VoIP service/media implementation;
+   callers to a normal SIM number need a compatible gateway/forwarding setup.
+   Phone-side locked operation still needs background/network/device validation.
+   Telecom registration alone does not transfer control of cellular media.
+
+D. OEM/system integration: 🟠 AMBER.
+   Privileged AOSP audio access offers a conditional route [3]. Requires OEM
+   system integration, permission allowlisting and compatible call-audio support;
+   not a portable installation or a default-dialer permission upgrade.
+
+DECISION AND REMAINING DEVICE ACCEPTANCE
+Keep SMS reliability AMBER: user-reported locked operation is conditional on
+silent/vibration mode, and audible-ringtone operation is RED. Silent/vibration
+mode is a demonstrated test condition, not a validated universal fix. Confirm
+recipient delivery, actual decline and repeated success in each mode before
+claiming reliable locked end-to-end behavior. Diagnose audible-ringtone listening
+using activation, microphone and audio-focus evidence before selecting a fix.
+Keep prerecorded SIM-call audio RED for this APK. Investigate service-side voice
+or OEM integration only if its deployment constraints meet the product need.
+No recording injection, speaker workaround or replacement telephony stack was built.
+
+Use a consenting test caller and record at least five screen-on locked trials and
+five screen-off locked trials with the exact voice command. This is an initial
+acceptance sample, not a statistical reliability guarantee. For each, record:
+  ringtone/silent/vibration mode; lock state throughout; invocation/recognized
+  command; SMS callback/result code;
+  caller-observed message and receipt time; actual decline/disconnect;
+  any unlock prompt; time from end of command to send result and decline.
+Compare audible-ringtone, silent and vibration modes in locked and unlocked
+states, recording listening failures separately from SMS-send failures.
+Include cancellation, caller hangup/answer before receipt, duplicate commands,
+hidden caller, missing permissions, and each available SIM where practical.
+Use buttons/unlocked review as a separate baseline to distinguish voice problems
+from carrier/SMS problems. No send-before-success decline, wrong-recipient SMS,
+duplicate send or unrelated-call decline is acceptable. Report counts and failures,
+not just the last successful status. Detailed phone outcomes remain pending;
+conditional operation and audible-ringtone listening failure are user-reported.
+
+SOURCES AND EVIDENCE
+Existing implementation guide: docs/INCOMING_CALL_REPLY.md (earlier review-only
+sections are supplemented by the later locked direct-voice shortcut).
+Source directory: android/app/src/main/kotlin/com/example/voice_assistant/communications/
+  VoiceCallReplyExecutor.kt; CallReplySmsSender.kt; CallReplyAccess.kt;
+  IncomingCallReply.kt; SmsReplyCompletion.kt; IncomingCallVoicePreparation.kt.
+Policy: android/app/src/main/kotlin/com/example/voice_assistant/lockscreen/SessionActionExecutor.kt
+Test XML: build/app/test-results/testDebugUnitTest/TEST-com.example.voice_assistant.<class>.xml
+[1] https://developer.android.com/reference/android/telecom/Call#answer(int)
+[2] https://developer.android.com/reference/android/telecom/InCallService
+[3] https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/media/java/android/media/AudioManager.java
+    See getCallUplinkInjectionAudioTrack and isPstnCallAudioInterceptable.
+[4] https://android.googlesource.com/platform/cts/+/d69b2773ad1437981101858acd1eaed502cd6e9d/tests/tests/media/audio/src/android/media/audio/cts/RoutingTest.java
+[5] https://www.twilio.com/docs/voice/twiml/play
+[6] https://www.twilio.com/docs/usage/webhooks/voice-webhooks

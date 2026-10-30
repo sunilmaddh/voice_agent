@@ -1,0 +1,412 @@
+FREE WEB SEARCH WHILE LOCKED - FINAL EVIDENCE AND ACCEPTANCE REPORT
+Date: 12 October 2026 (Asia/Calcutta)
+Overall: RED - scoped locked voice-to-useful-answer acceptance is not met.
+Targeted fixes and live Android retrieval passed. Operator initially reported no
+response for three spoken queries, then confirmed an audible limitation message
+for Kotlin. This verifies failure-message audibility, not a useful search answer.
+This section supersedes the earlier five-query acceptance verdict below.
+
+REVISED ACCEPTANCE SCOPE
+In scope: bounded factual instant answers (Kotlin/Mount Everest) and current
+provider weather for Bengaluru/Bangalore, India; source-attributed speech while
+locked, without opening browser or requesting unlock.
+Outside acceptance: general news, live share prices, full web-index search,
+other-date weather forecasts and universal coverage of arbitrary questions.
+No paid search API introduced. These exclusions do not waive Kotlin/weather or
+locked speech validation.
+
+STATUS
+GREEN - Bangalore/Bengaluru selection defect fixed in source. Both aliases use
+        Bengaluru, countryCode=IN and validate Karnataka and the exact city name;
+        wrong-country results yield no weather instead of a misleading answer.
+GREEN - Live workstation geocoding returned Bengaluru, Karnataka, IN at
+        12.97194, 77.59369. Live Kotlin query returned a direct programming-language
+        abstract. These are provider probes, not locked-phone voice trials.
+GREEN - 12 focused unit tests passed (WebAnswerTest 6, WeatherSearchTest 6),
+        zero failures/errors; debug APK and Android test APK builds passed.
+GREEN - Direct abstracts bypass local-model selection, avoiding an unnecessary
+        model dependency/delay. Related-only evidence still requires selection.
+GREEN - Live Android probes on A103SH: 2 tests passed. Kotlin direct answer
+        succeeded without model selection; both Bangalore aliases returned
+        Bengaluru, India current modeled weather with Asia/Kolkata timestamp.
+AMBER - Historical Kotlin phone failure: investigated, exact cause unresolved.
+GREEN - Kotlin follow-up audible limitation confirmed by operator; TTS evidence
+        only, not successful factual-answer acceptance.
+AMBER - Browser/unlock behavior and repeated screen-off lifecycle not fully
+        verified. Latest command snapshot confirms secure lock during execution.
+RED   - Fresh operator trial: "Search for what is Kotlin", "weather in Bangalore"
+        and "weather in Bengaluru" initially reportedly produced no response.
+        Operator initially clarified complete silence, then confirmed for the
+        Kotlin follow-up an audible limitation: "this search does not cover
+        everything". Kotlin useful-answer acceptance still fails.
+RED   - General news/live share-price capability unsupported by this free lookup
+        in prior samples; excluded from current acceptance, not a release gate.
+
+KOTLIN WORKSTATION / PHONE DIFFERENCE
+LATEST FOLLOW-UP: operator reports no response to all three queries after the
+fix. New lastCommand shows secure lock true at start/end, GOOGLE_SEARCH,
+WEB_NO_ANSWER, action 317 ms and TTS playback callback about 8.34 seconds, with
+no TTS error. Query is absent so this cannot identify which trial failed.
+No successful voice answer is claimed. Added metadata-only acceptance labels
+(KOTLIN/EVEREST/BANGALORE_WEATHER/BENGALURU_WEATHER/OTHER) and validated evidence
+count to distinguish recognized-query mismatch from absent provider evidence on
+a fresh attempt; arbitrary transcripts are not persisted.
+SUBSEQUENT CLARIFICATION: operator heard the search-coverage limitation after
+the Kotlin query. This supersedes complete silence for that follow-up trial:
+audible failure-message TTS is operator-confirmed, but a useful Kotlin answer
+was not delivered. Weather trials have no corrected audible-outcome evidence.
+Do not count speaking a limitation as successful factual-answer acceptance.
+Fresh diagnostic record now exists: timestampMs=1791808460330,
+deviceLocked=true, code=WEB_NO_ANSWER, webTestCase=OTHER, webEvidenceCount=0,
+ttsError=null. The query reaching the executor did not match the exact normalized
+Kotlin acceptance text ("what is Kotlin" or "Kotlin"), nor another listed test
+case. Together with the spoken limitation, this narrows the observed failure to
+different query text reaching retrieval and no usable evidence for that query.
+Exact words are intentionally not stored; a transcription error versus a spoken
+paraphrase/extra words cannot yet be distinguished. Successful exact-text Android
+Kotlin probe is not contradicted by this different-query result. No root-cause
+claim about a particular misheard word is justified.
+Follow-up diagnostic build passed six WebAnswerTest tests and assembleDebug,
+then installed successfully. Diagnostic APK SHA-256:
+9CC1E504F4D7D189698C779A042019D62251F5666AFF0E0399A55879B1B08CDA
+The retrieval probe APK/hash in PHONE RETRIEVAL RESULTS remains the build used
+for those probes.
+Failed-trial metadata saved in docs/benchmarks/locked-web-no-response-2026-10-12.xml.
+Workstation PowerShell only exercised retrieval, not Android STT, routing,
+model selection, locked-session lifecycle or TTS. The same exact text query
+still returns a direct abstract today, so blanket provider non-coverage is not
+an adequate explanation for the historical phone failure.
+Today's metadata-only phone inspection found a historical lastCommand with
+GOOGLE_SEARCH, WEB_NO_ANSWER, secure lock true at start/completion and completed
+TTS callbacks (action about 258 ms; TTS playback about 8.24 s; total about 15.14 s).
+That record has no query/transcript; it cannot be attributed to Kotlin and may
+belong to a previously unsupported news/price query. TTS callbacks do not prove
+audibility. Current phone recognition settings select en-US/system STT.
+Missing model alone does not explain loss of a valid direct abstract; fallback
+already existed. Direct-first selection now avoids waiting on a model when
+one is available. Recognition differences, provider response variation and
+lifecycle remain hypotheses until a fresh query-correlated voice trial.
+Live Android HttpURLConnection/executor probes now pass the exact Kotlin query
+on the corrected APK. This rules out a persistent inability of today's Android
+retrieval path to answer that exact text; it does not reconstruct the old spoken
+query or establish why the earlier build failed. No unsupported transcription
+normalization or hardcoded Kotlin answer was introduced.
+
+PHONE RETRIEVAL RESULTS (NOT VOICE ACCEPTANCE)
+A103SH corrected debug APK installed successfully; package update time was
+reported as 2026-10-12 17:54:02. APK SHA-256:
+4F9B2EC8B2CECD9C29B6E12357CA533263CCAB4FE393646C20BFC81912859F7D
+System assistant selection remained AikoVoiceInteractionService.
+At approximately 17:55 IST, live Android instrumentation ran 2 tests successfully
+in 3.042 seconds total (test runtime, not speech latency):
+  Kotlin: WEB_ANSWER_READY; programming-language description; source Wikipedia.
+  Bangalore: Bengaluru, India; 28.0 C; feels like 28.3 C; clear skies.
+  Bengaluru: same city and values; provider update 2026-10-12 17:45 Asia/Kolkata.
+Values are provider results, not independently measured station observations.
+Instrumentation bypassed microphone recognition and audible playback. No claim
+of a locked voice pass follows from these tests. Aiko was reopened afterward.
+
+WEATHER FIX AND LIMITS
+Old code requested count=1 for Bangalore and blindly used the first result;
+the recorded workstation match was Bangalore Town, Pakistan. Current code
+normalizes the targeted Indian aliases, requests up to ten country-filtered
+matches, then checks country/name/state before fetching weather coordinates.
+Regression covers Pakistan listed before the valid Bengaluru result and
+wrong-country-only rejection. Other ambiguous city names still use the first
+provider result; geographic disambiguation is not generally solved.
+Weather is fetched online from Open-Meteo current fields with place, update time
+and provider timezone spoken. It is numerical-model current conditions, not
+guaranteed live station observations. Timestamp freshness and values must be
+checked on the phone; source does not enforce a maximum timestamp age.
+
+WHAT THE FREE APPROACH CAN SUPPORT
+1. Short factual abstracts where DuckDuckGo Instant Answers has direct evidence,
+   with source URL attribution and bounded extractive summaries. No model needed
+   for direct abstracts. Coverage and uptime are not guaranteed; no answer means
+   a spoken limitation, not an invented answer.
+2. Current modeled weather from Open-Meteo for a resolvable city, with the targeted
+   Bengaluru correction. Requires internet; tomorrow/yesterday forecasts are
+   not implemented in this flow. Unknown locations return a limitation.
+3. Native locked-session routing for public lookup is allowed in source; no
+   browser intent in current dispatch. Requires the supported system-assistant
+   session, microphone/STT/TTS availability and physical locked lifecycle testing.
+   The older restricted LockScreenAssistantActivity is a distinct entry point
+   whose responder does not permit general search; do not conflate the paths.
+Open-Meteo free access is for non-commercial evaluation/prototyping, with rate
+limits and no uptime guarantee. Commercial deployment needs a separate service
+terms decision; no subscription purchased or integrated [R3].
+
+REMAINING VOICE ACCEPTANCE
+After corrected APK installation, repeat each of "Search for what is Kotlin",
+"Search for Mount Everest", "weather in Bangalore" and "weather in Bengaluru"
+three times with secure screen-on lock and three times starting screen-off.
+Record actual recognized query, result code, source, spoken answer, weather city/
+provider timestamp, lock state at start/end, audible completion, no unlock/browser,
+first audio and total latency. That is 24 proposed trials, not performed passes.
+Add offline/network failure and cancellation checks: speak truthful failure;
+never synthesize factual/weather values. Kotlin follow-up confirmed only an audible
+limitation. Repeated successful acceptance trials remain outstanding; development
+HTTP probes are not substitutes for physical spoken trials.
+
+LOCAL SLM / THIRD-PARTY DECISION
+Local SLM: AMBER for optional command interpretation and related-evidence
+selection; deployed-model validation is separate and incomplete. Direct provider
+abstracts and current weather do not require a local SLM. An offline SLM alone
+is RED for verified current web/weather information: new external facts need
+an external data source. Retain free third-party retrieval with optional local
+processing. Neither cloud AI nor a paid search API is necessary to address
+the observed exact-query mismatch. Keep news/prices excluded and complete locked
+voice acceptance before claiming reliable support. No paid integration made.
+
+EVIDENCE
+docs/benchmarks/locked-web-recheck-2026-10-12.json: fresh workstation responses.
+docs/benchmarks/locked-web-android-probe-2026-10-12.txt: 2 passing device tests.
+docs/benchmarks/locked-web-android-retrieval-2026-10-12.txt: public retrieval logs.
+Source changes: actions/WeatherSearch.kt and WebAnswerExecutor.kt under
+android/app/src/main/kotlin/com/example/voice_assistant/.
+Tests: WeatherSearchTest.kt, WebAnswerTest.kt; live Android probe:
+android/app/src/androidTest/kotlin/com/example/voice_assistant/WebLookupDeviceTest.kt.
+tooling/probe-web-lookups.ps1 now mirrors corrected Bengaluru selection.
+[R1] https://open-meteo.com/en/docs/geocoding-api
+[R2] https://github.com/duckduckgo/duckduckgo-publisher/blob/master/share/site/duckduckgo/api.tx
+[R3] https://open-meteo.com/en/pricing
+[R4] https://open-meteo.com/en/docs
+
+HISTORICAL APPENDIX - 9 OCTOBER RESULTS (BEFORE TARGETED FIX)
+WEB SEARCH IN LOCKED MODE - FINAL TEST REPORT
+Date: 9 October 2026 (Asia/Calcutta)
+Overall status: 🔴 RED - five-query locked-mode acceptance criteria not met.
+Report finalized with available evidence; remaining validation is explicitly open.
+
+EXECUTIVE RESULT
+Only Mount Everest reportedly answered the requested information: 1 of 5 queries.
+Weather returned a response but failed the live-data requirement. Kotlin, current
+news and live share price produced no answers. No complete successful retrieval,
+useful accurate answer and audible playback without browser/unlock was independently
+verified. The free implementation is not ready for general locked web-search acceptance.
+
+STATUS LEGEND
+🟢 GREEN - Passed within the explicitly stated scope.
+🟠 AMBER - Partial evidence or required validation still missing.
+🔴 RED   - Requested behavior failed or acceptance criteria were not met.
+
+STATUS BY AREA
+Area                         | Status | Test result / limitation
+Mount Everest                | 🟠 AMBER  | Answer reported while locked; exact phone
+                             |        | content, accuracy and source unrecorded.
+Kotlin                       | 🔴 RED    | No phone answer despite useful evidence
+                             |        | from the workstation provider probe.
+Current Bangalore weather    | 🔴 RED    | User confirms no live data. Workstation
+                             |        | geocoding also selected a city in Pakistan.
+Current India news           | 🔴 RED    | No phone answer; provider returned no evidence.
+Live Reliance share price    | 🔴 RED    | No phone answer; provider returned no quote.
+Locked-mode operation        | 🟠 AMBER  | Some responses reported while locked;
+                             |        | consistent completion not established.
+Answer usefulness/accuracy   | 🟠 AMBER  | Some factual provider claims checked;
+                             |        | exact phone answers unavailable to score.
+Audible spoken output        | 🟠 AMBER  | TTS path implemented; audibility not
+                             |        | separately confirmed in user feedback.
+No browser / no unlock       | 🟠 AMBER  | Current search code launches no browser
+                             |        | and permits locked search; device behavior
+                             |        | not explicitly reported.
+Response time                | 🟠 AMBER  | HTTP probe times available; complete
+                             |        | phone response times not measured.
+Local SLM validation         | 🟠 AMBER  | No deployed model observed; direct-answer
+                             |        | fallback exists, actual inference unverified.
+Regression tests             | 🟢 GREEN  | 11 fixture-based tests passed, zero failures;
+                             |        | does not prove physical-phone success.
+
+MEASURED PROVIDER RETRIEVAL TIMES
+Mount Everest: 459 ms; Kotlin: 103 ms; Bangalore weather: 1,641 ms;
+current India news: 96 ms; live Reliance share price: 102 ms.
+These are single workstation samples, not locked-phone performance measurements.
+HTTP success for news/prices means a response arrived, not that an answer existed.
+
+EVIDENCE SUMMARY
+
+The free lookup can retrieve useful factual abstracts without a browser. In five
+live workstation provider probes, two factual queries returned useful evidence,
+news and live share price returned no evidence, and weather resolved to the wrong
+city. In subsequent user-reported locked-phone trials, Aiko answered Mount Everest
+and Bangalore weather only; Kotlin, current news and live share price failed to
+produce answers. The user subsequently clarified that weather also did not
+provide live data. Thus 2/5 queries produced some response, but only Mount Everest
+was reported to answer the requested information (1/5); this is not an independently
+verified accuracy score. Weather fails the current/live-data requirement.
+Full acceptance remains open because answer text, phone
+timings, browser behavior and unlock behavior were not supplied.
+
+METHOD AND DEVICE EVIDENCE
+Five HTTPS probes used the same query strings, endpoints and AikoAssistant/1.0
+User-Agent as the implementation. Weather included geocoding and forecast requests.
+One sample per query; no averages or reliability claims. The PowerShell client
+differs from Android HttpURLConnection and does not exercise routing, SLM or TTS.
+Successful probes ran at approximately 15:57 IST. Initial sandbox requests failed
+to connect; retry outside the sandbox succeeded. Those initial failures do not
+establish a provider outage or a phone connectivity issue.
+
+Connected device: A103SH. Android secure assistant setting selects
+com.example.voice_assistant/.lockscreen.AikoVoiceInteractionService.
+Window-policy inspection showed keyguard showing=false and screen ON: the phone
+was unlocked during this inspection. App files contained only profileInstalled;
+no command_models directory or deployed command model was observed. No APK was
+installed, no settings were changed, and no synthetic text was treated as speech.
+Subsequent user feedback, replying to the five-query locked-phone test request:
+"It is given answer for Mount everest and weather in banglore only for other it
+not able give answer". Treat this as operator-reported phone evidence, separate
+from the earlier unlocked inspection and workstation probes. Exact answer text,
+source readout, audible delivery, unlock/browser behavior and timing were not
+individually described. The cause of the Kotlin failure is not established.
+Subsequent correction: "for weather it is also not given live data". This
+supersedes any interpretation of the weather response as successful live weather.
+
+FIVE REPRESENTATIVE QUERY RESULTS
+Locked-phone outcome summary (user-reported):
+  Mount Everest: answer received.
+  What is Kotlin: unable to give an answer, despite workstation evidence.
+  Bangalore weather: response received, but no live data according to the user;
+    FAIL for current weather. Returned location, values and timestamp not supplied.
+  Latest India news today: unable to give an answer.
+  Live Reliance Industries share price: unable to give an answer.
+For every row: audible TTS not separately confirmed; browser and unlock behavior
+not reported; speech-to-answer and speech-completion latency NOT MEASURED.
+Times below measure workstation HTTP retrieval only, including parsing and, for
+weather, both HTTP requests. They exclude STT, command routing, model selection
+and speech playback.
+
+1. Say: "Search for Mount Everest"
+   Provider: DuckDuckGo Instant Answers.
+   Returned source: https://en.wikipedia.org/wiki/Mount_Everest
+   HTTP time: 459 ms.
+   Useful evidence: highest mountain above sea level; China-Nepal border;
+   reported height 8,848.86 m. A direct abstract was present, so the code can use
+   its extractive fallback without a loaded model.
+   Accuracy: the height agrees with the official China-Nepal announcement [1].
+   The complete abstract was not independently fact-checked. The default spoken
+   summary selects up to three sentences. User reports an answer on the locked
+   phone; exact phone output/source was not supplied for accuracy assessment.
+
+2. Say: "Search for what is Kotlin"
+   Provider: DuckDuckGo Instant Answers.
+   Returned source: https://en.wikipedia.org/wiki/Kotlin
+   HTTP time: 103 ms.
+   Useful evidence: statically typed programming language, cross-platform targets
+   and Java interoperability. A direct abstract was present.
+   Accuracy: the core description agrees with Kotlin's official FAQ [2]. The
+   entire abstract, including historical adoption figures, was not audited.
+   Useful provider answer, but user reports no answer on the locked phone.
+   Provider retrieval alone did not establish end-to-end success. Recognized
+   query, session result code and network/model state are needed to diagnose it.
+
+3. Say: "weather in Bangalore"
+   Provider: Open-Meteo geocoding and current weather.
+   Source: https://open-meteo.com/ (exact requests saved in raw evidence).
+   HTTP time: 1,641 ms for geocoding plus weather.
+   Returned location: Bangalore Town, Pakistan; timezone Asia/Karachi.
+   Returned values: 31.0 C; feels like 33.2 C; weather code 1 (mainly clear);
+   provider timestamp 2026-10-09 15:15 Asia/Karachi.
+   Accuracy: FAIL for the intended Bengaluru/Bangalore, India. Numerical values
+   were retrieved, but were not independently verified against observations.
+   The code speaks the resolved place/country, which exposes the mismatch, but
+   selects the first geocoding match without disambiguation. Do not report this
+   as a successful Bangalore, India weather answer. The timestamp is the
+   provider's update time, not the test start time. User reports receiving a
+   weather answer on the locked phone; its city and values were not supplied.
+   The wrong-location finding applies to the workstation probe and cannot be
+   assumed to describe the user's exact phone answer.
+   Subsequent user clarification: the phone did not provide live weather data.
+   Device outcome: FAIL to satisfy current weather, even though a response was
+   received. Exact response/timestamp are unavailable, so stale data, a generic
+   answer, incorrect routing or another cause cannot be distinguished.
+
+4. Say: "Search for latest India news today"
+   Provider: DuckDuckGo Instant Answers.
+   HTTP time: 96 ms.
+   Source/result: no abstract, source URL or related topics returned.
+   Accuracy/usefulness: no news answer to score; FAIL to satisfy the request.
+   Expected code result: WEB_NO_ANSWER, with a spoken explanation that instant
+   answers do not cover all websites or live news. User reports no answer on the
+   locked phone; the exact failure message/result code was not supplied.
+
+5. Say: "Search for live Reliance Industries share price"
+   Provider: DuckDuckGo Instant Answers.
+   HTTP time: 102 ms.
+   Source/result: no abstract, source URL or related topics returned.
+   Accuracy/usefulness: no quote to score; FAIL to satisfy a live-price request.
+   No exchange, currency, quote timestamp or delay metadata was available.
+   Expected code result: WEB_NO_ANSWER. A company description, cached number or
+   unsupported model estimate must not be accepted as a live share price.
+   User reports no answer on the locked phone; exact failure speech is unknown.
+
+IMPLEMENTATION AND REGRESSION VALIDATION
+11 existing tests passed: WebAnswerTest (6) and WeatherSearchTest (5), zero failures.
+Command: android/gradlew.bat :app:testDebugUnitTest
+  --tests com.example.voice_assistant.WebAnswerTest
+  --tests com.example.voice_assistant.WeatherSearchTest
+Tests use fixtures/test doubles; they do not establish live phone execution.
+
+SessionAccessPolicy permits GOOGLE_SEARCH while locked without personal-readout
+permission. AndroidActionExecutor routes it to WebAnswerExecutor, which uses
+HTTPS evidence and returns source-attributed response text. The active native
+session uses the speech coordinator/TTS path. No browser-launch intent occurs in
+this dispatch path. These are source/test findings; user feedback confirms two
+answers but does not separately confirm locked browser or audio behavior.
+The old GoogleSearchActionExecutor remains in the
+repository but is not the current AndroidActionExecutor search dispatch.
+
+The local SLM selects an evidence index; it does not freely generate an answer.
+Spoken factual summaries are extractive, up to three sentences/600 characters.
+Without a model, a direct abstract still works; related-only evidence produces
+WEB_MODEL_UNAVAILABLE. Empty results produce WEB_NO_ANSWER, network errors
+WEB_SEARCH_FAILED, and executor timeouts WEB_SEARCH_TIMEOUT. Those expected
+messages must not be counted as useful search answers.
+
+LIMITATIONS AND DECISION
+The lookup is a bounded factual-answer service, not full web search [3]. It did
+not meet the current-news or live-share-price requirements in these samples.
+Weather has a demonstrated location-selection defect. Network and active native
+session are required; screen-off activation, Doze, STT language, TTS voice and
+audio routing can affect locked operation. Each HTTP connection has an 8-second
+connect/read timeout; the executor has a 60-second deadline. These bounds are
+not measured phone response times or a guaranteed user-visible deadline.
+
+Keep general locked web search acceptance OPEN: user-reported answer availability
+is 2/5 for any response, but only 1/5 reportedly answered the requested information;
+weather failed the live-data requirement. Useful accurate spoken answers without
+browser/unlock are not fully
+confirmed. Investigate the Kotlin device failure before attributing it to limited
+provider coverage, since the same workstation query returned a direct abstract.
+Retain the free implementation
+for narrow factual use while fixing/validating geographic selection. News needs
+dated article evidence and quotes need a dedicated timestamped market-data
+source. These gaps do not by themselves establish that a paid provider is needed.
+No paid provider was selected, purchased or integrated in this evaluation.
+
+REMAINING LOCKED-PHONE ACCEPTANCE
+On the target installed APK, confirm the default assistant and speech setup,
+then lock the phone and invoke Aiko using its supported assistant/wake control.
+Speak the five queries above. Record secure keyguard state during retrieval and
+playback, recognized query, actual spoken answer/source, first-audio time from
+end of speech, full completion time, and any unlock/browser launch. Repeat with
+screen initially off. Turning the screen off during an active session may cancel
+it and is a separate lifecycle check. Compare factual claims with [1]/[2], use
+the intended Indian city for weather, dated articles for news and an exchange-
+timestamped quote for prices. If markets are closed, label the latest quote as
+such. A phone-side observer is required to confirm audibility and usefulness.
+
+EVIDENCE AND REFERENCES
+Raw successful probes: docs/benchmarks/locked-web-provider-probe.json
+Repeatable workstation probe: tooling/probe-web-lookups.ps1
+Tests: build/app/test-results/testDebugUnitTest/TEST-com.example.voice_assistant.WebAnswerTest.xml
+       build/app/test-results/testDebugUnitTest/TEST-com.example.voice_assistant.WeatherSearchTest.xml
+Source: android/app/src/main/kotlin/com/example/voice_assistant/actions/WebAnswerExecutor.kt
+        android/app/src/main/kotlin/com/example/voice_assistant/actions/WeatherSearch.kt
+        android/app/src/main/kotlin/com/example/voice_assistant/actions/AndroidActionExecutor.kt
+        android/app/src/main/kotlin/com/example/voice_assistant/lockscreen/SessionAccessPolicy.kt
+        android/app/src/main/kotlin/com/example/voice_assistant/lockscreen/SystemAssistantActivity.kt
+[1] https://www.fmprc.gov.cn/eng/gjhdq_665435/2675_665437/2752_663508/2754_663512/202406/t20240607_11411567.html
+[2] https://kotlinlang.org/docs/faq.html
+[3] https://github.com/duckduckgo/duckduckgo-publisher/blob/master/share/site/duckduckgo/api.tx
+[4] https://open-meteo.com/en/docs
+Earlier general lock-screen documentation contains historical browser/unlock
+claims; use this report and current source for this lookup's evaluation scope.

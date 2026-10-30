@@ -1,0 +1,8 @@
+﻿
+com.example.voice_assistant.WebLookupDeviceTest:..
+
+Time: 3.042
+
+OK (2 tests)
+
+

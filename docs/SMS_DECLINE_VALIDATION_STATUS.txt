@@ -1,0 +1,291 @@
+CALLER ANNOUNCEMENT, ACCEPT/CUT AND RECORDED REPLY: FEASIBILITY REPORT
+Date: 12 October 2026 (Asia/Calcutta)
+
+REQUESTED EXPERIENCE
+Incoming call -> agent tells the user the caller's name -> asks "Accept or cut
+the call?" -> user says Accept: connect the call; user says Cut: caller hears
+the user's prerecorded message, then the connection ends.
+Overall current-APK feasibility: RED for the complete requested experience.
+Announcement and voice decisions have an implementation; caller-facing recorded
+audio is the blocking requirement. No alternative architecture implemented.
+
+COLOR MEANING FOR THIS ASSESSMENT
+GREEN: supported and implemented within the specified source scope; physical
+evidence is identified separately. AMBER: conditional or insufficiently tested.
+RED: unsupported in the current ordinary APK or conflicts with required behavior.
+
+FEATURE                         | STATUS | FINDING
+Caller-name lookup/local speech | GREEN  | Existing CallerAnnouncer resolves an
+                               |        | available contact/display name and
+                               |        | speaks it to the phone user. Existing
+                               |        | docs record one user-confirmed playback.
+Always identify caller by name | AMBER  | Requires available identity/contact
+                               |        | access; hidden/unknown callers need a
+                               |        | generic fallback, not an invented name.
+Ask Accept or Cut              | GREEN  | Optional prompt and bounded final-only
+                               |        | recognition exist in current source.
+Recognize Accept/Cut reliably  | AMBER  | Fresh repeated physical tests pending;
+                               |        | earlier unrecognized responses recorded.
+Accept connects ordinary call | AMBER  | Source calls Call.answer(audio-only);
+                               |        | request is not proof of connected audio.
+Cut ends the call immediately | RED    | Current prompted Cut sends saved SMS,
+                               |        | then rejects only after send success.
+                               |        | It is not a standalone immediate cut.
+Cut + SMS existing behavior   | AMBER  | Implemented; one separate explicit SMS
+                               |        | shortcut trial reported receipt/end.
+                               |        | Does not validate prompted Cut behavior.
+Cut + recording to SIM caller | RED    | No supported public cellular-uplink
+                               |        | injection path for this ordinary APK.
+Speak/play locally on handset | GREEN  | Local announcement is implemented;
+                               |        | this does not establish remote playback.
+Locked/background recognition | AMBER  | Opt-in locked announcements, microphone
+                               |        | permissions and OS lifecycle limits;
+                               |        | voice decisions do not authenticate user.
+Silent/vibration announcement | RED    | Current announcement policy suppresses
+                               |        | speech/decision in quiet ringer modes.
+                               |        | Separate wake/SMS success is not this flow.
+Full requested SIM workflow   | RED    | Recorded remote reply remains unsupported.
+
+WHY "CUT, THEN PLAY" NEEDS A DIFFERENT CALL PATH
+Once a call disconnects, its audio connection is gone. The intended sequence
+must be "decline speaking personally -> a service answers or receives diversion
+-> play recording -> hang up". Answering a SIM call through Call.answer does
+not give the APK ownership of cellular audio. Default Phone role and local TTS
+do not grant remote playback. AOSP's uplink injection is a privileged SystemApi
+requiring CALL_AUDIO_INTERCEPTION; hardware support is also conditional [F1].
+Speaker-to-microphone playback is not a reliable supported deployment option.
+
+OPTIONS AND RECOMMENDATION
+Hosted telephony/IVR - AMBER: preferred candidate for ordinary telephone callers.
+A provider can answer its call and play a prerecorded file [F2]. For the exact
+interaction, it must coordinate a bounded Accept/Cut decision with the handset:
+Accept bridges the user; Cut plays the message and hangs up. This is a proposed
+architecture, not present capability. Requires service number or compatible
+carrier forwarding, provider eligibility, hosted media/control backend and
+internet signalling. Static forwarding alone does not implement the live
+Accept/Cut decision. Costs: number rental, inbound minutes, forwarding and
+bridged legs, hosting and support; recording/storage only if collecting voicemail.
+
+App-owned VoIP - AMBER: feasible when app/backend owns the media; recorded audio
+can be transmitted before hangup. Requires signalling/media stack, background
+incoming-call handling, network and NAT/TURN infrastructure. Callers using an
+ordinary SIM number need a PSTN gateway/number or forwarding. Costs: backend,
+media/TURN bandwidth, managed service fees and PSTN legs/number rental as needed.
+Telecom integration does not transfer SIM media ownership to a VoIP application.
+
+OEM-level integration - AMBER in principle, RED for portable APK deployment:
+requires OEM/system-image integration, privileged permissions and supported
+telephony audio hardware [F1]. Costs: commercial integration/licensing if agreed,
+device-specific firmware maintenance and OTA/carrier regression testing.
+Default-dialer selection alone cannot enable this route.
+
+Carrier voicemail - AMBER: may provide a custom greeting following supported
+diversion. Check SIM carrier availability, reject/busy/no-answer forwarding and
+charges. This may satisfy a simpler recorded greeting but does not establish
+the exact on-demand agent workflow. Carrier and plan were not supplied.
+
+Recommendation: retain caller announcement/Accept and existing Cut-and-SMS as
+the current bounded MVP, with clear wording that Cut sends SMS before rejection.
+If prerecorded remote audio is mandatory, evaluate hosted IVR and carrier routing
+before implementation. Use VoIP for app-owned calls; pursue OEM work only with a
+device partnership. No production-ready full-flow claim is justified yet.
+Detailed illustrative provider prices and constraints appear in the appendix.
+
+VALIDATION STILL REQUIRED
+Repeat caller-name prompt and Accept/Cut decisions in unlocked, screen-on locked
+and screen-off locked states. Test normal ringing, quiet-mode suppression,
+unknown caller, unavailable contacts, partial/negative/ambiguous speech, timeout,
+caller hangup and call replacement. Record actual connected audio for Accept,
+actual SMS receipt/disconnect for current Cut, and caller-heard complete recording
+only if a future authorized architecture is deployed. None of these new trials
+was performed for this feasibility report. Earlier shortcut SMS trial is separate.
+
+SOURCE EVIDENCE
+docs/CALLER_ANNOUNCEMENTS.md documents caller-name feedback, prompted controls,
+earlier recognition failures and pending fresh tests after the readiness fix.
+Current source: communications/CallerAnnouncer.kt, IncomingCallVoiceDecision.kt,
+CallerAnnouncementPolicy.kt and CallReplySmsSender.kt under
+android/app/src/main/kotlin/com/example/voice_assistant/.
+[F1] https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/media/java/android/media/AudioManager.java
+[F2] https://www.twilio.com/docs/voice/twiml/play
+[F3] https://developer.android.com/reference/android/telecom/Call
+
+APPENDIX: EARLIER SMS VALIDATION AND VOICEMAIL COST ASSESSMENT
+SMS-AND-DECLINE AND RECORDED VOICEMAIL: FINAL EVIDENCE REPORT
+Date: 12 October 2026 (Asia/Calcutta)
+Overall: AMBER - existing implementation has partial evidence; repeated physical
+acceptance testing is incomplete. One operator-reported physical trial passed;
+no real calls or SMS were initiated by development tools. This is the final
+report of available evidence, not completed acceptance certification.
+
+GREEN = verified within the stated scope.
+AMBER = partial evidence or pending validation.
+RED = known failed requirement, unsupported deployment, or blocked test execution.
+
+Area                          | Status | Evidence and limits
+Source send-before-decline     | GREEN  | SmsManager sent RESULT_OK gates rejection
+                              |        | of the same eligible ringing call.
+Fixture regression evidence   | GREEN  | Existing 12 October XML: IncomingCallReply
+                              |        | 9 tests and SmsReplyCompletion 4 tests;
+                              |        | zero failures/errors. Not rerun here.
+Trial 1 recipient SMS receipt | GREEN  | Operator confirmed exact SMS arrival;
+                              |        | receipt timestamp was not provided.
+Trial 1 call disconnect       | GREEN  | Operator confirmed no manual hangup;
+                              |        | no independent Telecom trace captured.
+Repeated receipt/disconnect   | AMBER  | One reported pass; 44 planned trials remain.
+Locked/unlocked silent/vibrate | AMBER  | Prior user-reported conditional operation;
+                              |        | trial counts and end outcomes unavailable.
+Audible-ringtone voice capture | RED    | Prior user reported no listening. Current
+                              |        | source mitigation needs installed-APK retest.
+Current role/permission setup | GREEN  | Follow-up A103SH check: Aiko is default
+                              |        | Phone; READ_PHONE_STATE and SEND_SMS granted.
+Repeated device test execution| AMBER  | Role/permissions verified; only one trial
+                              |        | reported. Remaining conditions pending.
+Prerecorded audio to SIM caller| RED    | Unsupported by current ordinary APK.
+Architecture decision         | AMBER  | Options below; no alternative implemented.
+
+ACTUAL OUTCOME RECORD
+Physical trial 1: unlocked + silent mode. Operator explicitly confirmed Aiko
+listened, the caller received the exact fixed SMS, and the call disconnected
+without manual hangup. Joint result: PASS (operator-reported; not independently
+captured). Receipt time, latency, actual sound observation, SIM and build hash
+were not supplied. Completed trials: 1 of 45 planned; repeated reliability
+remains AMBER. Other conditions remain untested in this evaluation.
+The 9 October report records CALL_REPLY_SMS_SENT_DECLINE_REQUESTED on A103SH at
+09:30:13 IST, plus user feedback that silent/vibration works locked/unlocked.
+Those earlier records do not establish actual receipt or disconnect. Installed
+build identity is not established by versionName=1.0.0/versionCode=1.
+Initial recheck today: Google Phone default; READ_PHONE_STATE denied; SMS granted.
+After operator setup, follow-up recheck confirmed com.example.voice_assistant
+as default Phone, with READ_PHONE_STATE and SEND_SMS granted. This verifies only
+these prerequisites, not wake recognition, carrier delivery or call disconnect.
+Sandbox ADB failed, but an approved outside-sandbox enumeration found A103SH.
+The saved latest status still says CALL_REPLY_SMS_SENT_DECLINE_REQUESTED with
+timestampMs=1791789358491; this is not a trial observed in this evaluation.
+Current source is not proof of installed behavior.
+Source sends with a sent PendingIntent but no delivery PendingIntent; recipient
+receipt must therefore be checked independently. Even a delivery callback would
+not establish that the caller read the message.
+
+REPEATED PHYSICAL ACCEPTANCE MATRIX (one operator-reported trial)
+Condition                      | Planned repeats | Receipt | Disconnect | Status
+Unlocked, audible ringtone     | 5               | Unknown | Unknown    | AMBER
+Unlocked, silent               | 5 (1 reported)  | 1 yes   | 1 yes      | AMBER
+Unlocked, vibration            | 5               | Unknown | Unknown    | AMBER
+Locked screen on, audible      | 5               | Unknown | Unknown    | AMBER
+Locked screen on, silent       | 5               | Unknown | Unknown    | AMBER
+Locked screen on, vibration    | 5               | Unknown | Unknown    | AMBER
+Locked screen off, audible     | 5               | Unknown | Unknown    | AMBER
+Locked screen off, silent      | 5               | Unknown | Unknown    | AMBER
+Locked screen off, vibration   | 5               | Unknown | Unknown    | AMBER
+Total planned: 45 per device/SIM configuration. Five repetitions are an initial
+acceptance sample, not a population reliability guarantee. Audible-mode rows
+remain pending retest despite the historical RED listening result.
+
+EXECUTION AND EVIDENCE
+Use a consenting second handset/operator. Record installed APK SHA-256/build,
+device model/Android version, carrier and SIM alias, roles, permissions, wake
+preferences, voice-friendly-call setting, DND/channel overrides and actual sound
+or vibration observed. Keep caller numbers out of the report. Verify the audible
+condition really rings; a channel that suppresses sound is not an audible trial.
+Start each trial with a new call; set mode before calling. Use Hey Indo and the
+complete command "decline the call and text I will call you later". Keep the
+specified lock state through completion; record any unlock requirement.
+Record activation and recognized command separately from SMS send status.
+The caller must check the exact fixed message, sender SIM and receipt timestamp,
+and observe the call ending without manually hanging up. On the Aiko handset,
+record ringing-to-disconnected evidence and timestamp, not only reject issuance.
+Record elapsed time from command end to callback, receipt and disconnect. Observe
+SMS for five minutes; if absent, label "not received within observation window",
+not permanent delivery failure. Continue recording any later receipt separately.
+Use the adjacent CSV once per actual attempt, with evidence references and reasons.
+Do not populate unexecuted trials as passes. Summarize completed/attempted counts,
+receipt successes, disconnect successes and joint successes for each condition.
+GREEN requires all planned trials in the stated scope to show both actual SMS
+receipt and actual disconnect, with no wrong recipient/SIM or duplicate actions.
+Any failure remains visible; do not discard it because a retry succeeds.
+Separately test unlocked manual review, cancellation, negated/partial commands,
+caller hangup/answer before callback, duplicate command, hidden number, permission
+denial, multiple calls and each available SIM. Failures/timeouts must not cause
+app-initiated rejection; distinguish natural caller hangup from app behavior.
+
+SHORT FEASIBILITY RECOMMENDATION (deployment estimates, not selected designs)
+Hosted telephony/IVR - AMBER: best candidate if ordinary telephone callers must
+hear prerecorded audio. A service can play a recording on a call it terminates
+[1]. Requires a service number or supported SIM forwarding, provider account,
+regional number eligibility and a hosted webhook/media endpoint. Forwarding and
+on-demand control of a currently ringing SIM call are different requirements;
+static forwarding does not reproduce the present per-call voice command.
+Recurring costs: number rental, inbound minutes, any forwarding/bridged outbound
+leg, hosting/media, support and applicable taxes. Get a local carrier/provider
+quote before choosing. Twilio's India page lists international numbers from
+USD 1.15/month, but no India inbound rate; this does not establish a usable local
+India inbound number. Listed outbound India mobile USD 0.0496/min and local
+USD 0.0699/min are outbound examples, not IVR inbound prices [2].
+
+App-owned VoIP - AMBER: suitable when calls originate in the app or reach an
+app-controlled backend. Control of media makes recorded-audio transmission
+feasible (architectural inference); Android ConnectionService integrates an
+app's calls with Telecom without granting SIM-call media ownership [3]. Requires
+VoIP signalling/media, caller onboarding, network connectivity, background call
+handling and NAT/TURN infrastructure. Ordinary SIM callers still require a
+PSTN gateway/service number or forwarding. Recurring costs: backend operation,
+bandwidth/TURN and optional managed media fees; PSTN legs and number rental add
+cost. Twilio browser/app and SIP examples are USD 0.0040/min per applicable leg;
+Asia TURN is USD 0.60/GB [2]. These are component rates, not a total project quote.
+
+OEM-level integration - AMBER in principle, RED for ordinary APK deployment:
+AOSP uplink injection is a privileged SystemApi, not a default-Phone-role
+upgrade [4]. Requires an OEM agreement, system image integration, privileged
+permission allowlisting and supported telephony/audio hardware [5]. Confirm
+actual device support; allowlisting alone does not guarantee audio routing.
+Recurring costs: OEM licensing/support if contracted, device-specific firmware
+maintenance, OTA regression testing and carrier charges. No universal public
+per-minute API tariff; commercial terms require an OEM quote. High deployment
+and maintenance burden makes this unsuitable for a portable APK MVP.
+
+Recommendation: complete SMS-and-decline device validation first. Keep that
+architecture if it satisfies the product need. If caller-facing prerecorded
+audio is mandatory, evaluate hosted IVR first; use VoIP for app-owned calls,
+and OEM integration only with an existing supported device partnership.
+No architecture replacement, dependency or application code change made here.
+
+OPERATOR REQUEST: RECORDED VOICEMAIL
+The operator now requests a report addressing voicemail with a recorded message.
+Trial 1 establishes an SMS outcome only; recorded audio was not tested in that
+trial. Carrier voicemail/custom recorded greeting is a separate potential route:
+availability, diversion after decline, greeting customization and charges must
+be confirmed with the SIM carrier. It is not the APK injecting call audio.
+The exact requested behavior is unresolved, so both cases are assessed:
+1. Greeting only: hosted IVR can play the prerecorded file then hang up [1].
+2. Greeting plus caller voicemail: hosted IVR can play the file then record the
+   caller's response [6]. Requires secure retrieval, retention/deletion policy,
+   recording access controls and any applicable recording notice. These are
+   deployment requirements, not features implemented in the current APK.
+For ordinary SIM callers, first check whether the carrier already offers a
+custom greeting and suitable conditional diversion. Carrier, plan, forwarding
+behavior and tariff are unknown; no availability or price is asserted here.
+If carrier voicemail is unsuitable, hosted IVR is the preferred evaluation
+candidate. VoIP requires app-owned media or a PSTN gateway; OEM integration
+requires a device partnership. No provider or replacement design is selected.
+Additional voicemail recurring costs: recording and storage, retrieval/backend
+operation and optional transcription. Twilio's checked India page lists recording
+USD 0.0025/min and storage USD 0.0005 per stored minute per month [2]; call-leg,
+number and hosting charges are additional. A prerecorded greeting alone does not
+require recording or transcription of callers. Local provider costs need a quote.
+Recorded-voicemail playback and storage remain AMBER/pending assessment; direct
+APK prerecorded audio to the ordinary SIM caller remains RED. No change built.
+
+SOURCES
+Existing evidence: docs/INCOMING_CALL_RESPONSE_RESULT.txt (9 October 2026).
+Flow: docs/INCOMING_CALL_REPLY.md; communications/CallReplySmsSender.kt and
+SmsReplyCompletion.kt under android/app/src/main/kotlin/com/example/voice_assistant/.
+Existing XML: build/app/test-results/testDebugUnitTest/TEST-com.example.voice_assistant.IncomingCallReplyTest.xml
+and TEST-com.example.voice_assistant.SmsReplyCompletionTest.xml.
+Web sources checked 12 October 2026; rates are USD and can change.
+[1] https://www.twilio.com/docs/voice/twiml/play
+[2] https://www.twilio.com/en-us/voice/pricing/in
+[3] https://developer.android.com/reference/android/telecom/ConnectionService
+[4] https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/media/java/android/media/AudioManager.java
+[5] https://source.android.com/docs/core/permissions/perms-allowlist
+[6] https://www.twilio.com/docs/voice/twiml/record
